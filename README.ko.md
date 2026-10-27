@@ -100,7 +100,7 @@ LLM 에이전트를 만들 때 읽을 논문을 한 줄 설명과 함께 정리�
 - **🧱 제1부: 핵심 구성 요소**
   - [🧠 계획과 추론 (55)](#planning)
   - [💾 메모리 (60)](#memory)
-  - [🔧 도구 사용 (49)](#tools)
+  - [🔧 도구 사용 (50)](#tools)
   - [🤝 다중 에이전트 시스템 (57)](#multi-agent)
 - **🌍 제2부: 환경과 응용 속의 에이전트**
   - [🌐 상호작용 환경 (60)](#environments)
@@ -392,11 +392,11 @@ LLM 에이전트를 만들 때 읽을 논문을 한 줄 설명과 함께 정리�
 <sub><a href="#contents">↑ 목차로 돌아가기</a></sub>
 
 <a id="tools"></a>
-### 🔧 도구 사용 (49)
+### 🔧 도구 사용 (50)
 *서베이 §6(도구 사용과 행동 실행)에 해당합니다.*
 
 <details>
-<summary><b>논문 49편 보기</b></summary>
+<summary><b>논문 50편 보기</b></summary>
 
 - **[TALM: Tool Augmented Language Models](https://arxiv.org/abs/2205.12255)** (Parisi et al., arXiv 2022) - *언어 모델이 자기 지도 방식으로 도구 사용을 스스로 익히게 하는 초기 정식화로 영향력이 컸고, Toolformer의 자기 지도 접근에 앞서 같은 방향을 제시했다.*
 - **[API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs](https://arxiv.org/abs/2304.08244)** (Li et al., EMNLP 2023) - *도구로 보강한 대화형 LLM을 평가하고 학습시키는 전용 벤치마크 가운데 가장 이르고 가장 많이 인용된 것 중 하나이다.* [[code](https://github.com/AlibabaResearch/DAMO-ConvAI)]
@@ -448,6 +448,7 @@ LLM 에이전트를 만들 때 읽을 논문을 한 줄 설명과 함께 정리�
 - **[Do Tool Calls Execute as Intended? Measuring and Repairing Intent-Execution Correspondence in LLM Agents](https://arxiv.org/abs/2610.04375)** (Yang et al., arXiv 2026) - *harness가 실제로 실행한 동작이 LLM이 낸 도구 호출과 같은지 확인하고, 다르면 처음 바꾼 단계를 짚어 낸다. Windows의 실제 운영 세션에서 나온 셸 호출 47,828건에서 Claude Code의 Bash 도구는 코드, 이스케이프 시퀀스, 긴 텍스트를 담은 호출의 12.0%를 바꿨고, 백슬래시가 바뀐 호출의 80.7%는 오류 없이 엉뚱한 동작을 실행했다. trajectory를 보고 판정하는 심사 모델은 실패의 95.1%를 LLM 탓으로 돌렸지만, 실제로는 절반 넘게 도구 호출에서 실행까지의 경로가 원인이었다. IntAct는 벤치마크에서 호출이 바뀐 실패의 79.2%를 되살렸다. Linux에서는 1,779건 모두 인자가 적힌 그대로 전달됐다.* [[code](https://github.com/GLEAM-Lab/intact-bash-mod)]
 - **[ProgAgent: Learning Tool Orchestration through Programmatic Training](https://arxiv.org/abs/2610.14774)** (Li et al., arXiv 2026) - *Qwen3-8B와 14B가 도구를 부르는 코드를 써서 도구를 조율하도록 학습시킨다. 중간 결과는 컨텍스트가 아니라 런타임 변수에 담긴다. 환경 크기 네 가지에 걸친 합성 과제 215개로 cold-start SFT를 한 뒤 GSPO를 적용했다. 14B 모델은 MCPMark에서 29.7%로, 같은 방식으로 학습하되 도구를 직접 호출한 경우의 8.0%를 앞섰고, MCP-Atlas에서는 45.6%로 직접 호출의 29.7%와 Claude Sonnet-4.5의 43.8%보다 높았다. 그러나 Playwright에서 코드로 한 호출의 40.7%는 제어 흐름 없이 도구를 한 번만 부르는 것이었고, 학습하지 않은 백본은 코드 인터페이스만으로는 거의 나아지지 않았다.*
 - **[Where Does Exactly-Once Live? Model, Harness, and Tool-Contract Effects on Duplicate Side Effects in LLM Agents](https://arxiv.org/abs/2609.29095)** (Li, arXiv 2026) - *모델 아홉 개를 최소한의 scaffold와 Copilot CLI, Hermes, Codex CLI에서 돌린 에피소드 25,930개를 채점한다. 기준은 시뮬레이션 서비스 여섯 개와 주입한 장애 열두 가지로 이루어진 sandbox에서 실제로 커밋된 부수 효과의 장부다. 정확히 한 번만 실행하라고 지시하면 최신 모델은 확인 응답이 사라진 쓰기를 0.5%만 중복했지만, 커밋이 늦게 반영될 때는 56%, 메시지가 다시 전달될 때는 74%를 중복했다. 이 두 경우에는 다시 읽어 봐도 아무것도 나오지 않으며, 분산의 81%를 도구 계약이 설명했고 harness의 영향은 작았다. 모든 쓰기에 idempotency key를 붙이면 중복이 28%에서 4%로 줄었다. 중복을 일으킨 에피소드의 90%에서 에이전트는 성공했다고 보고했다.*
+- **[Teaching LLMs to Learn Tool Trialing and Execution through Environment Interaction](https://arxiv.org/abs/2601.12762)** (Gao et al., arXiv 2026) - *도구에 기대기 전에 먼저 시험해 보도록 모델을 학습시킨다. DeepSeek-V3.1이 ToolBench 질의 1,500개로 만든 trajectory, 곧 도구를 하나씩 시험해 보고 self-correction까지 거치는 trajectory로 SFT를 하고, 질의 800개로 GRPO를 더했다. StableToolBench에서 Qwen2.5-7B의 solvable pass rate는 43.4에서 66.4로 올라 가장 좋은 RL baseline(58.4)과 zero-shot GPT-4o(60.2)를 앞섰고, Qwen3-14B는 71.1에 이르렀다. 다만 도메인 밖 벤치마크인 ToolHop에서는 7B 모델이 37.4로 GPT-4o의 45.3에 못 미쳤고, pass rate는 GPT-4o가 채점했으며, 시험 호출이 늘어나는 만큼 지연이 커진다. 데이터를 쓰는 것처럼 부작용이 있는 도구를 시험해 보는 것은 안전하지 않다고 저자들도 밝혔다. 코드, 학습 데이터, 7B 체크포인트가 공개되어 있고, 공개된 파이프라인은 학습 trajectory 생성과 RL을 API를 흉내 내는 모델인 MirrorAPI-Cache에 대고 돌린다.* [[code](https://github.com/NEUIR/ToolMaster)]
 </details>
 
 <sub><a href="#contents">↑ 목차로 돌아가기</a></sub>
@@ -865,10 +866,11 @@ GitHub의 **Cite this repository** 버튼은 [`CITATION.cff`](CITATION.cff)를 �
 이 목록은 커뮤니티가 함께 관리합니다. 논문을 제안하고, 검증하고, 설명을 달아 주신 모든 분께 감사드립니다:
 
 <details>
-<summary><b>기여자 20명 보기</b></summary>
+<summary><b>기여자 21명 보기</b></summary>
 
 | | 기여자 | 기여 내용 |
 |---|---|---|
+| <a href="https://github.com/passionate11"><img src="https://github.com/passionate11.png?size=48" width="48" height="48" alt="@passionate11"></a> | **[@passionate11](https://github.com/passionate11)** | 도구 사용 절에 도구에 기대기 전에 먼저 시험해 보도록 모델을 학습시키는 ToolMaster 추가([#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)). 공동 제1저자 중 한 명이 직접 제출 |
 | <a href="https://github.com/segevshlomovIBM"><img src="https://github.com/segevshlomovIBM.png?size=48" width="48" height="48" alt="@segevshlomovIBM"></a> | **[@segevshlomovIBM](https://github.com/segevshlomovIBM)** | 응용 분야 절에 IBM의 CUGA 에이전트를 채용 업무에 시범 투입한 보고 From Benchmarks to Business Impact 추가([#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)). 제1저자가 직접 제출 |
 | <a href="https://github.com/KhanCold"><img src="https://github.com/KhanCold.png?size=48" width="48" height="48" alt="@KhanCold"></a> | **[@KhanCold](https://github.com/KhanCold)** | 평가와 벤치마크 절에 에이전트가 온라인 상점을 시뮬레이션상 365일 동안 운영하는 벤치마크 MerchantBench 추가([#24](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/24)). 제1저자가 직접 제출 |
 | <a href="https://github.com/cnsdqd-dyb"><img src="https://github.com/cnsdqd-dyb.png?size=48" width="48" height="48" alt="@cnsdqd-dyb"></a> | **[@cnsdqd-dyb](https://github.com/cnsdqd-dyb)** | 평가와 벤치마크 절에 열린 연구 질문 300개와 시스템 12개의 보고서로 이루어진 벤치마크 Super Research 추가([#23](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/23)). 제1저자가 직접 제출 |
@@ -901,6 +903,7 @@ GitHub의 **Cite this repository** 버튼은 [`CITATION.cff`](CITATION.cff)를 �
 
 ## 🗓️ 업데이트 기록
 
+- **2026-10-28**: 공동 제1저자 [@passionate11](https://github.com/passionate11)가 보내 준 ToolMaster를 도구 사용 절에 추가했습니다([#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)). 도구를 먼저 시험해 보도록 학습한 Qwen2.5-7B는 StableToolBench에서 66.4로, 따로 학습하지 않은 GPT-4o의 60.2를 앞섰습니다. 573편에서 574편으로 늘었습니다.
 - **2026-10-19**: 제1저자 [@segevshlomovIBM](https://github.com/segevshlomovIBM)가 보내 준 From Benchmarks to Business Impact를 응용 분야 절에 추가했습니다([#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)). 아직 정식 운영 전인 채용 업무 시범에서 IBM의 CUGA 에이전트는 새 BPO-TA의 과제 26개에 정확도 87%를 냈습니다. 572편에서 573편으로 늘었습니다.
 - **2026-10-17**: 제1저자 [@KhanCold](https://github.com/KhanCold)가 보내 준 MerchantBench를 평가와 벤치마크 절에 추가했습니다([#24](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/24)). 온라인 상점을 시뮬레이션상 365일 동안 운영한 뒤, LLM 설정 16개 중 가장 좋은 것도 사람 참가자 평균 순자산의 27.3%에 그쳤습니다. 571편에서 572편으로 늘었습니다.
 - **2026-10-16**: 제1저자 [@cnsdqd-dyb](https://github.com/cnsdqd-dyb)가 보내 준 Super Research를 평가와 벤치마크 절에 추가했습니다([#23](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/23)). 연구 질문 300개에서 시스템 12개 중 가장 높은 Gemini Deep Research도 100점 만점에 28.62점이었습니다. 570편에서 571편으로 늘었습니다.

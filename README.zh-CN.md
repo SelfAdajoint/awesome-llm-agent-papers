@@ -100,7 +100,7 @@
 - **🧱 第一部分：核心组成**
   - [🧠 规划与推理 (55)](#planning)
   - [💾 记忆 (60)](#memory)
-  - [🔧 工具使用 (49)](#tools)
+  - [🔧 工具使用 (50)](#tools)
   - [🤝 多智能体系统 (57)](#multi-agent)
 - **🌍 第二部分：环境与应用中的智能体**
   - [🌐 交互环境 (60)](#environments)
@@ -392,11 +392,11 @@
 <sub><a href="#contents">↑ 返回目录</a></sub>
 
 <a id="tools"></a>
-### 🔧 工具使用 (49)
+### 🔧 工具使用 (50)
 *对应综述 §6（工具使用与行动执行）。*
 
 <details>
-<summary><b>展开 49 篇论文</b></summary>
+<summary><b>展开 50 篇论文</b></summary>
 
 - **[TALM: Tool Augmented Language Models](https://arxiv.org/abs/2205.12255)** (Parisi et al., arXiv 2022) - *较早提出用自监督自举让语言模型学会使用工具，影响很大，直接预示了 Toolformer 的自监督方法。*
 - **[API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs](https://arxiv.org/abs/2304.08244)** (Li et al., EMNLP 2023) - *最早也是引用最多的专用基准之一，用来评估和训练工具增强的对话 LLM。* [[code](https://github.com/AlibabaResearch/DAMO-ConvAI)]
@@ -448,6 +448,7 @@
 - **[Do Tool Calls Execute as Intended? Measuring and Repairing Intent-Execution Correspondence in LLM Agents](https://arxiv.org/abs/2610.04375)** (Yang et al., arXiv 2026) - *检查 harness 实际执行的动作是否就是 LLM 发出的工具调用中的动作，并指出最先改动它的环节。在 Windows 上生产会话的 47,828 次 shell 调用中，Claude Code 的 Bash 工具改动了含有代码、转义序列或长文本的调用中的 12.0%，反斜杠被改动的调用有 80.7% 在没有报错的情况下执行了错误的动作；基于 trajectory 的评判模型把 95.1% 的失败归咎于 LLM，而实际上一半以上是从工具调用到执行的路径造成的。IntAct 修复了基准中调用被改动的失败的 79.2%；在 Linux 上，全部 1,779 次调用的参数都按原样送达。* [[code](https://github.com/GLEAM-Lab/intact-bash-mod)]
 - **[ProgAgent: Learning Tool Orchestration through Programmatic Training](https://arxiv.org/abs/2610.14774)** (Li et al., arXiv 2026) - *训练 Qwen3-8B 和 14B 通过编写调用工具的代码来编排工具，中间结果保存在运行时变量里，而不放进上下文；训练数据是四种环境规模下合成的 215 个任务，先做 cold-start SFT，再做 GSPO。14B 模型在 MCPMark 上达到 29.7%，同样配方但直接调用工具时为 8.0%；在 MCP-Atlas 上达到 45.6%，直接调用为 29.7%，Claude Sonnet-4.5 为 43.8%。但它在 Playwright 上的代码调用有 40.7% 只包含一次工具调用、没有任何控制流，未经训练的骨干模型仅靠代码接口也几乎没有提升。*
 - **[Where Does Exactly-Once Live? Model, Harness, and Tool-Contract Effects on Duplicate Side Effects in LLM Agents](https://arxiv.org/abs/2609.29095)** (Li, arXiv 2026) - *把九个模型在一个最小 scaffold 以及 Copilot CLI、Hermes 和 Codex CLI 下运行的 25,930 个回合，对照一个由六个模拟服务和十二种注入故障组成的 sandbox 中实际提交的副作用账本来评分。被要求只执行一次时，前沿模型对确认消息丢失的写操作只重复了 0.5%，但在提交延迟时重复了 56%，在消息重新投递时重复了 74%；这两种情况下回读查不到任何东西，方差的 81% 由工具契约解释，harness 的影响很小。给每次写操作加上 idempotency key，重复率从 28% 降到 4%；在发生了重复的回合中，智能体有 90% 报告了成功。*
+- **[Teaching LLMs to Learn Tool Trialing and Execution through Environment Interaction](https://arxiv.org/abs/2601.12762)** (Gao et al., arXiv 2026) - *训练模型在依赖工具之前先试用工具：先用 DeepSeek-V3.1 在 1,500 个 ToolBench 查询上生成的 trajectory 做 SFT，这些 trajectory 会逐个试用工具并做 self-correction，再在另外 800 个查询上做 GRPO。在 StableToolBench 上，Qwen2.5-7B 的 solvable pass rate 从 43.4 提高到 66.4，高于最好的 RL baseline（58.4）和 zero-shot 的 GPT-4o（60.2），Qwen3-14B 达到 71.1；但在领域外的 ToolHop 上，7B 模型以 37.4 仍落后于 GPT-4o 的 45.3，pass rate 由 GPT-4o 评判，额外的试用调用会增加延迟，作者也提醒，试用会产生副作用（例如写入数据）的工具并不安全。代码、训练数据和 7B checkpoint 均已公开，公开的流程在生成训练 trajectory 和做 RL 时调用的是模拟 API 的模型 MirrorAPI-Cache。* [[code](https://github.com/NEUIR/ToolMaster)]
 </details>
 
 <sub><a href="#contents">↑ 返回目录</a></sub>
@@ -865,10 +866,11 @@ GitHub 的 **Cite this repository** 按钮会读取 [`CITATION.cff`](CITATION.cf
 这份清单由社区共同维护。感谢每一位推荐、核实或注释过论文的朋友：
 
 <details>
-<summary><b>展开 20 位贡献者</b></summary>
+<summary><b>展开 21 位贡献者</b></summary>
 
 | | 贡献者 | 贡献内容 |
 |---|---|---|
+| <a href="https://github.com/passionate11"><img src="https://github.com/passionate11.png?size=48" width="48" height="48" alt="@passionate11"></a> | **[@passionate11](https://github.com/passionate11)** | ToolMaster：训练模型在依赖工具之前先试用工具，收入工具使用（[#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)）。由两位共同第一作者之一提交 |
 | <a href="https://github.com/segevshlomovIBM"><img src="https://github.com/segevshlomovIBM.png?size=48" width="48" height="48" alt="@segevshlomovIBM"></a> | **[@segevshlomovIBM](https://github.com/segevshlomovIBM)** | From Benchmarks to Business Impact：IBM 在招聘业务中试点 CUGA 智能体的报告，收入应用领域（[#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)）。由第一作者本人提交 |
 | <a href="https://github.com/KhanCold"><img src="https://github.com/KhanCold.png?size=48" width="48" height="48" alt="@KhanCold"></a> | **[@KhanCold](https://github.com/KhanCold)** | MerchantBench：让智能体在模拟的 365 天里经营网店的基准，收入评估与基准（[#24](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/24)）。由第一作者本人提交 |
 | <a href="https://github.com/cnsdqd-dyb"><img src="https://github.com/cnsdqd-dyb.png?size=48" width="48" height="48" alt="@cnsdqd-dyb"></a> | **[@cnsdqd-dyb](https://github.com/cnsdqd-dyb)** | Super Research：由 300 个开放式研究问题和 12 个系统的报告组成的基准，收入评估与基准（[#23](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/23)）。由第一作者本人提交 |
@@ -901,6 +903,7 @@ GitHub 的 **Cite this repository** 按钮会读取 [`CITATION.cff`](CITATION.cf
 
 ## 🗓️ 更新记录
 
+- **2026-10-28**: 新增 ToolMaster，由共同第一作者之一 [@passionate11](https://github.com/passionate11) 提交，收入工具使用（[#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)）。经过先试用工具的训练，Qwen2.5-7B 在 StableToolBench 上达到 66.4，未经训练的 GPT-4o 为 60.2。从 573 篇增至 574 篇。
 - **2026-10-19**: 新增 From Benchmarks to Business Impact，由第一作者 [@segevshlomovIBM](https://github.com/segevshlomovIBM) 提交，收入应用领域（[#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)）。在尚未正式投产的招聘业务试点中，IBM 的 CUGA 智能体在新建 BPO-TA 的 26 个任务上准确率为 87%。从 572 篇增至 573 篇。
 - **2026-10-17**: 新增 MerchantBench，由第一作者 [@KhanCold](https://github.com/KhanCold) 提交，收入评估与基准（[#24](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/24)）。在模拟经营网店 365 天之后，16 个 LLM 配置中最好的一个，最终净资产也只有人类参与者平均值的 27.3%。从 571 篇增至 572 篇。
 - **2026-10-16**: 新增 Super Research，由第一作者 [@cnsdqd-dyb](https://github.com/cnsdqd-dyb) 提交，收入评估与基准（[#23](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/23)）。在它的 300 个研究问题上，12 个系统中得分最高的 Gemini Deep Research 也只有 28.62 分（满分 100）。从 570 篇增至 571 篇。

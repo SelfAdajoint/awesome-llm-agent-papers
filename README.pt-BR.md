@@ -100,7 +100,7 @@ Trabalhos recentes de 2026 que já estão chamando atenção.
 - **🧱 Parte I: Componentes centrais**
   - [🧠 Planejamento e raciocínio (55)](#planning)
   - [💾 Memória (60)](#memory)
-  - [🔧 Uso de ferramentas (49)](#tools)
+  - [🔧 Uso de ferramentas (50)](#tools)
   - [🤝 Sistemas multiagente (57)](#multi-agent)
 - **🌍 Parte II: Agentes em ambientes e aplicações**
   - [🌐 Ambientes interativos (60)](#environments)
@@ -392,11 +392,11 @@ Trabalhos recentes de 2026 que já estão chamando atenção.
 <sub><a href="#contents">↑ Voltar ao sumário</a></sub>
 
 <a id="tools"></a>
-### 🔧 Uso de ferramentas (49)
+### 🔧 Uso de ferramentas (50)
 *No survey: §6 (Uso de ferramentas e execução de ações).*
 
 <details>
-<summary><b>Mostrar 49 artigos</b></summary>
+<summary><b>Mostrar 50 artigos</b></summary>
 
 - **[TALM: Tool Augmented Language Models](https://arxiv.org/abs/2205.12255)** (Parisi et al., arXiv 2022) - *Formulação pioneira e influente de bootstrapping autossupervisionado para o uso de ferramentas em modelos de linguagem, que antecipa diretamente a abordagem autossupervisionada do Toolformer.*
 - **[API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs](https://arxiv.org/abs/2304.08244)** (Li et al., EMNLP 2023) - *Um dos primeiros e mais citados benchmarks dedicados a avaliar e treinar LLMs de diálogo com acesso a ferramentas.* [[code](https://github.com/AlibabaResearch/DAMO-ConvAI)]
@@ -448,6 +448,7 @@ Trabalhos recentes de 2026 que já estão chamando atenção.
 - **[Do Tool Calls Execute as Intended? Measuring and Repairing Intent-Execution Correspondence in LLM Agents](https://arxiv.org/abs/2610.04375)** (Yang et al., arXiv 2026) - *Verifica se a ação que o harness executa é a mesma da chamada de ferramenta emitida pelo LLM e aponta a primeira etapa que a alterou: em 47.828 chamadas de shell de sessões de produção no Windows, a ferramenta Bash do Claude Code altera 12,0% das chamadas que levam código, sequências de escape ou texto longo, 80,7% das chamadas com barras invertidas alteradas executam a ação errada sem nenhum erro, e juízes que avaliam a trajectory culpam o LLM por 95,1% das falhas, embora o caminho entre a chamada e a execução tenha causado mais da metade; o IntAct recupera 79,2% das falhas do benchmark com chamada alterada, enquanto no Linux os argumentos chegaram como foram escritos em todas as 1.779 chamadas.* [[code](https://github.com/GLEAM-Lab/intact-bash-mod)]
 - **[ProgAgent: Learning Tool Orchestration through Programmatic Training](https://arxiv.org/abs/2610.14774)** (Li et al., arXiv 2026) - *Treina o Qwen3-8B e o 14B a coordenar ferramentas escrevendo código que as chama e guarda os resultados intermediários em variáveis de execução, e não no contexto, com 215 tarefas sintetizadas em quatro tamanhos de ambiente, primeiro com SFT de cold start e depois com GSPO: o modelo de 14B chega a 29,7% no MCPMark, contra 8,0% da mesma receita com chamadas diretas de ferramentas, e a 45,6% no MCP-Atlas, contra 29,7% e os 43,8% do Claude Sonnet-4.5, mas 40,7% das suas chamadas de código no Playwright contêm uma única invocação de ferramenta, sem fluxo de controle, e backbones sem treino ganham pouco só com a interface de código.*
 - **[Where Does Exactly-Once Live? Model, Harness, and Tool-Contract Effects on Duplicate Side Effects in LLM Agents](https://arxiv.org/abs/2609.29095)** (Li, arXiv 2026) - *Avalia 25.930 episódios de nove modelos, num scaffold mínimo e no Copilot CLI, no Hermes e no Codex CLI, contra um registro dos efeitos colaterais de fato efetivados num sandbox de seis serviços simulados com doze falhas injetadas: instruídos a agir exatamente uma vez, os modelos de ponta duplicam só 0,5% das escritas cuja confirmação se perdeu, mas 56% com commits tardios e 74% com reentrega, casos em que uma releitura não encontra nada, o contrato da ferramenta explica 81% da variância e o harness pesa pouco; uma chave de idempotência em cada escrita reduz as duplicações de 28% para 4%, e os agentes relataram sucesso em 90% dos episódios em que tinham duplicado.*
+- **[Teaching LLMs to Learn Tool Trialing and Execution through Environment Interaction](https://arxiv.org/abs/2601.12762)** (Gao et al., arXiv 2026) - *Treina o modelo para testar as ferramentas antes de depender delas: SFT com trajectories geradas pelo DeepSeek-V3.1 a partir de 1.500 consultas do ToolBench, que testam cada ferramenta e passam por self-correction, e depois GRPO com mais 800. No StableToolBench, o Qwen2.5-7B passa de 43,4 para 66,4 em solvable pass rate, à frente do melhor baseline de RL, com 58,4, e do GPT-4o zero-shot, com 60,2, e o Qwen3-14B chega a 71,1; no ToolHop, fora do domínio de treino, o modelo de 7B ainda fica atrás do GPT-4o, com 37,4 contra 45,3, as pass rates são avaliadas pelo GPT-4o, as chamadas de teste extras aumentam a latência, e os autores alertam que testar ferramentas com efeitos colaterais, como gravar dados, não é seguro. Código, dados de treino e o checkpoint de 7B estão publicados, e o pipeline publicado gera as trajectories de treino e faz o RL contra o MirrorAPI-Cache, um modelo que simula as APIs.* [[code](https://github.com/NEUIR/ToolMaster)]
 </details>
 
 <sub><a href="#contents">↑ Voltar ao sumário</a></sub>
@@ -865,10 +866,11 @@ A maioria dos idiomas para os quais esta lista foi traduzida não é minha líng
 Esta lista é mantida pela comunidade. Um agradecimento a todos que sugeriram, conferiram ou anotaram um artigo:
 
 <details>
-<summary><b>Mostrar 20 colaboradores</b></summary>
+<summary><b>Mostrar 21 colaboradores</b></summary>
 
 | | Colaborador | Contribuição |
 |---|---|---|
+| <a href="https://github.com/passionate11"><img src="https://github.com/passionate11.png?size=48" width="48" height="48" alt="@passionate11"></a> | **[@passionate11](https://github.com/passionate11)** | ToolMaster, que treina o modelo para testar as ferramentas antes de depender delas, enviado por um dos dois primeiros autores, em Uso de ferramentas ([#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)) |
 | <a href="https://github.com/segevshlomovIBM"><img src="https://github.com/segevshlomovIBM.png?size=48" width="48" height="48" alt="@segevshlomovIBM"></a> | **[@segevshlomovIBM](https://github.com/segevshlomovIBM)** | From Benchmarks to Business Impact, o piloto do agente CUGA da IBM em recrutamento, enviado pelo primeiro autor, em Aplicações ([#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)) |
 | <a href="https://github.com/KhanCold"><img src="https://github.com/KhanCold.png?size=48" width="48" height="48" alt="@KhanCold"></a> | **[@KhanCold](https://github.com/KhanCold)** | MerchantBench, um benchmark em que um agente opera uma loja online por 365 dias simulados, enviado pelo primeiro autor, em Avaliação e benchmarks ([#24](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/24)) |
 | <a href="https://github.com/cnsdqd-dyb"><img src="https://github.com/cnsdqd-dyb.png?size=48" width="48" height="48" alt="@cnsdqd-dyb"></a> | **[@cnsdqd-dyb](https://github.com/cnsdqd-dyb)** | Super Research, um benchmark de 300 perguntas de pesquisa abertas com relatórios de 12 sistemas, enviado pelo primeiro autor, em Avaliação e benchmarks ([#23](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/23)) |
@@ -901,6 +903,7 @@ Distribuído sob a [licença MIT](LICENSE).
 
 ## 🗓️ Atualizações
 
+- **2026-10-28**: ToolMaster entrou em Uso de ferramentas, enviado por um dos dois primeiros autores ([@passionate11](https://github.com/passionate11), [#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)). Treinado para testar as ferramentas antes de depender delas, o Qwen2.5-7B chega a 66,4 no StableToolBench, contra 60,2 do GPT-4o sem treino. De 573 para 574.
 - **2026-10-19**: From Benchmarks to Business Impact entrou em Aplicações, enviado pelo primeiro autor ([@segevshlomovIBM](https://github.com/segevshlomovIBM), [#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)). Num piloto de recrutamento que ainda não está em produção plena, o agente CUGA da IBM chega a 87% nas 26 tarefas do novo conjunto BPO-TA. De 572 para 573.
 - **2026-10-17**: MerchantBench entrou em Avaliação e benchmarks, enviado pelo primeiro autor ([@KhanCold](https://github.com/KhanCold), [#24](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/24)). Depois de 365 dias simulados à frente de uma loja online, a melhor de 16 configurações de LLM termina com 27,3% do patrimônio líquido médio dos participantes humanos. De 571 para 572.
 - **2026-10-16**: Super Research entrou em Avaliação e benchmarks, enviado pelo primeiro autor ([@cnsdqd-dyb](https://github.com/cnsdqd-dyb), [#23](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/23)). Nas suas 300 perguntas de pesquisa, o melhor de 12 sistemas, o Gemini Deep Research, marca 28,62 de 100. De 570 para 571.

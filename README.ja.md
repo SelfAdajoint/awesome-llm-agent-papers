@@ -100,7 +100,7 @@ LLMエージェントを作るときに読むべき論文を、一行の説明�
 - **🧱 第1部：中核となる構成要素**
   - [🧠 計画と推論 (55)](#planning)
   - [💾 メモリ (60)](#memory)
-  - [🔧 ツール利用 (49)](#tools)
+  - [🔧 ツール利用 (50)](#tools)
   - [🤝 マルチエージェントシステム (57)](#multi-agent)
 - **🌍 第2部：環境と応用のなかのエージェント**
   - [🌐 インタラクティブ環境 (60)](#environments)
@@ -392,11 +392,11 @@ LLMエージェントを作るときに読むべき論文を、一行の説明�
 <sub><a href="#contents">↑ 目次に戻る</a></sub>
 
 <a id="tools"></a>
-### 🔧 ツール利用 (49)
+### 🔧 ツール利用 (50)
 *サーベイの§6（ツール利用と行動実行）に対応します。*
 
 <details>
-<summary><b>49本の論文を表示</b></summary>
+<summary><b>50本の論文を表示</b></summary>
 
 - **[TALM: Tool Augmented Language Models](https://arxiv.org/abs/2205.12255)** (Parisi et al., arXiv 2022) - *LMのツール利用を自己教師ありのbootstrappingで身につけさせる初期の定式化で、影響力が大きい。Toolformerの自己教師ありアプローチを直接先取りしていた。*
 - **[API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs](https://arxiv.org/abs/2304.08244)** (Li et al., EMNLP 2023) - *ツールで拡張した対話LLMの評価と学習に特化したベンチマークとして、最も早く、最も引用されているものの一つである。* [[code](https://github.com/AlibabaResearch/DAMO-ConvAI)]
@@ -448,6 +448,7 @@ LLMエージェントを作るときに読むべき論文を、一行の説明�
 - **[Do Tool Calls Execute as Intended? Measuring and Repairing Intent-Execution Correspondence in LLM Agents](https://arxiv.org/abs/2610.04375)** (Yang et al., arXiv 2026) - *harnessが実際に実行した動作がLLMの出したツール呼び出しのとおりかを確かめ、違えば最初に変えた段階を特定する。Windowsの本番セッションから得たシェル呼び出し 47,828 件では、Claude CodeのBashツールが、コード、エスケープシーケンス、長いテキストを含む呼び出しの 12.0% を変えており、バックスラッシュが変えられた呼び出しの 80.7% はエラーを出さずに誤った動作を実行した。trajectoryをもとに判定するモデルは失敗の 95.1% をLLMのせいにしたが、実際には半分以上が、ツール呼び出しから実行までの経路によるものだった。IntActは、ベンチマークで呼び出しが変えられた失敗の 79.2% を回復した。Linuxでは 1,779 件すべてで、引数が書かれたとおりに届いた。* [[code](https://github.com/GLEAM-Lab/intact-bash-mod)]
 - **[ProgAgent: Learning Tool Orchestration through Programmatic Training](https://arxiv.org/abs/2610.14774)** (Li et al., arXiv 2026) - *Qwen3-8Bと14Bに、ツールを呼ぶコードを書いてツールを使いこなすよう学習させる。途中の結果はコンテキストではなく実行時の変数に置く。四つの環境規模にわたる合成タスク 215 件でcold-start SFTを行い、続いてGSPOをかけた。14BモデルはMCPMarkで 29.7% に達し、同じ手順でツールを直接呼び出した場合の 8.0% を上回った。MCP-Atlasでは 45.6% で、直接呼び出しの 29.7% やClaude Sonnet-4.5の 43.8% より高かった。しかし、Playwrightでのコードによる呼び出しの 40.7% は、制御フローのない一回だけのツール呼び出しだった。学習していないバックボーンは、コードのインターフェースだけではほとんど伸びなかった。*
 - **[Where Does Exactly-Once Live? Model, Harness, and Tool-Contract Effects on Duplicate Side Effects in LLM Agents](https://arxiv.org/abs/2609.29095)** (Li, arXiv 2026) - *九つのモデルを、最小限のscaffoldと、Copilot CLI、Hermes、Codex CLIで動かした 25,930 件のエピソードを採点する。基準は、六つの模擬サービスと十二種類の注入した障害からなるsandboxで、実際にコミットされた副作用の台帳である。一度だけ実行するよう指示すると、最先端のモデルは確認応答が失われた書き込みを 0.5% しか重複させなかったが、コミットが遅れて反映される場合は 56%、メッセージが再配信される場合は 74% を重複させた。これらの場合は読み返しても何も見つからず、分散の 81% をツールの契約が説明し、harnessの影響は小さかった。すべての書き込みにidempotency keyを付けると、重複は 28% から 4% に減った。重複を起こしたエピソードの 90% で、エージェントは成功したと報告していた。*
+- **[Teaching LLMs to Learn Tool Trialing and Execution through Environment Interaction](https://arxiv.org/abs/2601.12762)** (Gao et al., arXiv 2026) - *ツールに頼る前にまず試してみるようモデルを学習させる。DeepSeek-V3.1がToolBenchのクエリ 1,500 件から作ったtrajectory、つまりツールを一つずつ試し、self-correctionも行うtrajectoryでSFTを行い、さらにクエリ 800 件でGRPOをかけた。StableToolBenchでは、Qwen2.5-7Bのsolvable pass rateが 43.4 から 66.4 に上がって最良のRL baseline（58.4）やzero-shotのGPT-4o（60.2）を上回り、Qwen3-14Bは 71.1 に達した。ただし、ドメイン外のToolHopでは7Bモデルが 37.4 で、GPT-4oの 45.3 に届かない。pass rateはGPT-4oが採点しており、試行の呼び出しが増える分だけ遅延も大きくなる。データの書き込みのような副作用を持つツールを試すのは安全でないと著者らも述べている。コード、学習データ、7Bのチェックポイントが公開されており、公開されたパイプラインは学習用trajectoryの生成とRLを、APIを模倣するモデルであるMirrorAPI-Cacheに対して行う。* [[code](https://github.com/NEUIR/ToolMaster)]
 </details>
 
 <sub><a href="#contents">↑ 目次に戻る</a></sub>
@@ -865,10 +866,11 @@ GitHubの**Cite this repository**ボタンは[`CITATION.cff`](CITATION.cff)を�
 このリストはコミュニティの手で保守されています。論文の提案、確認、説明文の執筆に協力してくださったすべての方に感謝します。
 
 <details>
-<summary><b>20人のコントリビューターを表示</b></summary>
+<summary><b>21人のコントリビューターを表示</b></summary>
 
 | | コントリビューター | 貢献内容 |
 |---|---|---|
+| <a href="https://github.com/passionate11"><img src="https://github.com/passionate11.png?size=48" width="48" height="48" alt="@passionate11"></a> | **[@passionate11](https://github.com/passionate11)** | 「ツール利用」に、ツールに頼る前にまず試すようモデルを学習させるToolMaster（[#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)）。二人の共同第一著者の一人による投稿 |
 | <a href="https://github.com/segevshlomovIBM"><img src="https://github.com/segevshlomovIBM.png?size=48" width="48" height="48" alt="@segevshlomovIBM"></a> | **[@segevshlomovIBM](https://github.com/segevshlomovIBM)** | 「応用分野」に、IBMのCUGAエージェントを採用業務で試験導入した報告From Benchmarks to Business Impact（[#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)）。第一著者本人による投稿 |
 | <a href="https://github.com/KhanCold"><img src="https://github.com/KhanCold.png?size=48" width="48" height="48" alt="@KhanCold"></a> | **[@KhanCold](https://github.com/KhanCold)** | 「評価とベンチマーク」に、シミュレーション上の 365 日間エージェントにオンラインストアを運営させるベンチマークMerchantBench（[#24](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/24)）。第一著者本人による投稿 |
 | <a href="https://github.com/cnsdqd-dyb"><img src="https://github.com/cnsdqd-dyb.png?size=48" width="48" height="48" alt="@cnsdqd-dyb"></a> | **[@cnsdqd-dyb](https://github.com/cnsdqd-dyb)** | 「評価とベンチマーク」に、300 の開かれた研究課題と 12 のシステムのレポートからなるベンチマークSuper Research（[#23](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/23)）。第一著者本人による投稿 |
@@ -901,6 +903,7 @@ GitHubの**Cite this repository**ボタンは[`CITATION.cff`](CITATION.cff)を�
 
 ## 🗓️ 更新履歴
 
+- **2026-10-28**: 共同第一著者の[@passionate11](https://github.com/passionate11)が送ってくれたToolMasterを「ツール利用」に追加しました（[#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)）。ツールをまず試すよう学習したQwen2.5-7Bは、StableToolBenchで 66.4 となり、学習なしのGPT-4oの 60.2 を上回りました。573 本から 574 本になりました。
 - **2026-10-19**: 第一著者の[@segevshlomovIBM](https://github.com/segevshlomovIBM)が送ってくれたFrom Benchmarks to Business Impactを「応用分野」に追加しました（[#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)）。まだ本番運用前の採用業務の試験で、IBMのCUGAエージェントは新しいBPO-TAの 26 タスクで正解率 87% でした。572 本から 573 本になりました。
 - **2026-10-17**: 第一著者の[@KhanCold](https://github.com/KhanCold)が送ってくれたMerchantBenchを「評価とベンチマーク」に追加しました（[#24](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/24)）。シミュレーション上の 365 日間オンラインストアを運営した結果、16 のLLM設定のうち最も良いものでも、人間の参加者の平均純資産の 27.3% にとどまりました。571 本から 572 本になりました。
 - **2026-10-16**: 第一著者の[@cnsdqd-dyb](https://github.com/cnsdqd-dyb)が送ってくれたSuper Researchを「評価とベンチマーク」に追加しました（[#23](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/23)）。300 の研究課題で、12 のシステムのうち最も高いGemini Deep Researchでも 100 点満点中 28.62 点でした。570 本から 571 本になりました。
