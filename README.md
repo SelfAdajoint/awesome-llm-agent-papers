@@ -100,7 +100,7 @@ Fresh 2026 work that is already drawing attention.
 - **🧱 Part I: Core Components**
   - [🧠 Planning & Reasoning (55)](#planning)
   - [💾 Memory (60)](#memory)
-  - [🔧 Tool Use (50)](#tools)
+  - [🔧 Tool Use (51)](#tools)
   - [🤝 Multi-Agent Systems (57)](#multi-agent)
 - **🌍 Part II: Agents in Context**
   - [🌐 Interactive Environments (60)](#environments)
@@ -392,11 +392,11 @@ Fresh 2026 work that is already drawing attention.
 <sub><a href="#contents">↑ Back to Contents</a></sub>
 
 <a id="tools"></a>
-### 🔧 Tool Use (50)
+### 🔧 Tool Use (51)
 *Corresponds to §6 (Tool Use and Action Execution).*
 
 <details>
-<summary><b>Show 50 papers</b></summary>
+<summary><b>Show 51 papers</b></summary>
 
 - **[TALM: Tool Augmented Language Models](https://arxiv.org/abs/2205.12255)** (Parisi et al., arXiv 2022) - *Early, influential formulation of self-supervised bootstrapping for tool use in LMs, directly anticipating Toolformer's self-supervised approach.*
 - **[API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs](https://arxiv.org/abs/2304.08244)** (Li et al., EMNLP 2023) - *One of the earliest and most cited dedicated benchmarks for evaluating and training tool-augmented dialogue LLMs.* [[code](https://github.com/AlibabaResearch/DAMO-ConvAI)]
@@ -449,6 +449,7 @@ Fresh 2026 work that is already drawing attention.
 - **[ProgAgent: Learning Tool Orchestration through Programmatic Training](https://arxiv.org/abs/2610.14774)** (Li et al., arXiv 2026) - *Trains Qwen3-8B and 14B to orchestrate tools by writing code that calls them and keeps intermediate results in runtime variables rather than in the context, on 215 synthesized tasks at four environment sizes with cold-start SFT and then GSPO: the 14B model reaches 29.7% on MCPMark against 8.0% for the same recipe with direct tool calls, and 45.6% on MCP-Atlas against 29.7% and Claude Sonnet-4.5's 43.8%, but 40.7% of its Playwright code calls hold a single tool invocation with no control flow, and untrained backbones gain little from the code interface alone.*
 - **[Where Does Exactly-Once Live? Model, Harness, and Tool-Contract Effects on Duplicate Side Effects in LLM Agents](https://arxiv.org/abs/2609.29095)** (Li, arXiv 2026) - *Grades 25,930 episodes of nine models, in a minimal scaffold and under Copilot CLI, Hermes and Codex CLI, against a ledger of the side effects actually committed in a sandbox of six simulated services with twelve injected faults: told to act exactly once, frontier models duplicate only 0.5% of writes whose acknowledgement was lost, but 56% under late commits and 74% under redelivery, where a read-back finds nothing and the tool contract explains 81% of the variance while the harness matters little; an idempotency key on every write cuts duplicates from 28% to 4%, and agents reported success in 90% of the episodes where they had duplicated.*
 - **[Teaching LLMs to Learn Tool Trialing and Execution through Environment Interaction](https://arxiv.org/abs/2601.12762)** (Gao et al., arXiv 2026) - *Trains a model to try tools out before relying on them: SFT on DeepSeek-V3.1 trajectories, built from 1,500 ToolBench queries, that test each tool and self-correct, then GRPO on 800 more. On StableToolBench, Qwen2.5-7B goes from 43.4 to 66.4 in solvable pass rate, ahead of the best RL baseline at 58.4 and of GPT-4o zero-shot at 60.2, and Qwen3-14B reaches 71.1; on the out-of-domain ToolHop the 7B model still trails GPT-4o, 37.4 against 45.3, the pass rates are graded by GPT-4o, the extra trial calls add latency, and the authors warn that trying out tools with side effects such as data writes is unsafe. Code, training data and the 7B checkpoint are released, and the released pipeline generates its training trajectories and runs RL against MirrorAPI-Cache, a model that simulates the APIs.* [[code](https://github.com/NEUIR/ToolMaster)]
+- **[TabAgent: Distilling LLM Agent Components into Cheap Classifiers](https://arxiv.org/abs/2602.16429)** (Levy et al., arXiv 2026) - *Replaces an agent's repeated tool-shortlisting decision with a small CatBoost classifier trained on features from its own successful traces.* [[code](https://github.com/dolev31/TabAgent)]
 </details>
 
 <sub><a href="#contents">↑ Back to Contents</a></sub>
