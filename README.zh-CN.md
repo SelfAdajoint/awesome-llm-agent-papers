@@ -106,7 +106,7 @@
   - [🌐 交互环境 (60)](#environments)
   - [🚀 应用领域 (58)](#applications)
 - **⚖️ 第三部分：贯穿全局的问题**
-  - [📊 评估与基准 (57)](#evaluation)
+  - [📊 评估与基准 (58)](#evaluation)
   - [🛡️ 安全与对齐 (62)](#safety)
 
 ## 🧭 背景
@@ -669,11 +669,11 @@
 ## ⚖️ 第三部分：贯穿全局的问题
 
 <a id="evaluation"></a>
-### 📊 评估与基准 (57)
+### 📊 评估与基准 (58)
 *对应综述 §9（评估与基准）。*
 
 <details>
-<summary><b>展开 57 篇论文</b></summary>
+<summary><b>展开 58 篇论文</b></summary>
 
 - **[GAIA: a benchmark for General AI Assistants](https://arxiv.org/abs/2311.12983)** (Mialon et al., ICLR 2024) - *参考基准，面向会用工具的通用智能体助手；一些热门的公开排行榜以它为基础，追踪前沿智能体的进展。*
 - **[SWE-bench: Can Language Models Resolve Real-World GitHub Issues?](https://arxiv.org/abs/2310.06770)** (Jimenez et al., ICLR 2024) - *编码与软件工程智能体事实上的标准基准；衍生出了 SWE-bench Verified/Lite/Live/Multimodal 这一系列。* [[code](https://github.com/SWE-bench/SWE-bench)]
@@ -733,6 +733,7 @@
 - **[Finding the Right Fit: Model-Harness Interactions across Agent Tasks](https://arxiv.org/abs/2610.00917)** (Li et al., arXiv 2026) - *把五个模型与四个可配置的 harness（OpenHands、DeepSeek Harness、PI 和 openJiuwen）配对，在 TUA-Bench、ALE-CLI 和 Terminal-Bench 4 上运行，再加上 Codex 与 Claude Code 的原生组合，共 66 种配置：模型排名会随 harness 反转，在 Terminal-Bench 4 上，Claude 在 OpenHands 中领先 GPT 7.94 个点，在 PI 中却落后 30.16 个点；五个模型中有四个的最佳 harness 随基准而变，模型厂商自己的 harness 也不一定最好；GPT-6 Astra 在 PI 中以每个任务 $4.66 的成本得到 60.32%，在 DeepSeek Harness 中花 $19.94 只得到 52.38%。每个任务只按最后一次运行计一次。* [[code](https://github.com/liyix/finding-the-right-fit)]
 - **[Mind the Gap Between Spatial Reasoning and Acting! Step-by-Step Evaluation of Agents With Spatial-Gym](https://arxiv.org/abs/2604.09338)** (Kaesberg et al., arXiv 2026) - *把带有七类相互作用的规则格的 2D 网格寻路变成一个 Gymnasium 任务，智能体从给出的合法走法中一步一步画出路径，可选择回退，并用 500 个谜题测试八个开放权重模型：最好的 GPT-OSS 120B 只解出 16.0%，人类为 98.0%，不顾规则、只找最短路径的智能体为 6.4%；逐步作答的形式消除了格式错误，让较弱的模型比一次性作答最多高 5.4 个点，却让较强的模型最多低 5.6 个点；允许回退后，GPT-OSS 的完成率从 85% 升到 94%，解题率却下降 5.8 个点；以图像形式拿到谜题的 Qwen3-VL-32B 只解出 2.8%，用文本时为 10.2%。没有测试任何专有模型。* [[code](https://github.com/lkaesberg/Spatial-Gym)]
 - **[Super Research: Answering Highly Complex Questions with Large Language Models through Super Deep and Super Wide Research](https://arxiv.org/abs/2603.00582)** (Dong et al., arXiv 2026) - *在十个领域提出 300 个开放式研究问题，先由 GPT-4o 和 Gemini Deep Research 起草，再由领域专家审核；每份报告都与一张由智能体构建、专家修订的事实与洞见参考图对照，从覆盖度、逻辑一致性、由 LLM 只凭报告作答的测验、客观性和引用分散度几方面打分：12 个系统中 Gemini Deep Research 以综合 28.62 分居首，用自带搜索作答的 Kimi-k2（26.16）高于 o3 Deep Research（22.04）；从报告中删去或加入 1 到 3 条事实时，基于图的分数在 57.4% 到 79.6% 的情况下朝正确方向变化，LLM 评估者只有 14.8% 到 22.2%。公开发布的内容包括问题和 3,600 份报告，但没有参考图和评分器，因此新的智能体还无法按论文的方式打分。* [[code](https://github.com/cnsdqd-dyb/Super-Research-Benchmark)]
+- **[SciΠvot: Benchmarking Principal-Investigator Judgment at Pivotal Moments of Scientific AutoResearch Agents](https://arxiv.org/abs/2610.21082)** (Sun et al., arXiv 2026) - *用资深研究者在六个月里于六个领域的 26 个项目中运行 LLM 智能体、并纠正其研究决策的记录，构建 248 道二选一题：模型只看纠正之前的项目记录，在智能体原来的计划和纠正后的计划之间选择。在中等 reasoning effort 下，五个前沿模型中有四个更常选原计划，Claude Opus 5 为 38.9%，唯一例外的 GPT-6 Astra 为 59.5%；所有设置中的最高分是 63.5%，而初次接触这些项目、可使用智能体助手的 13 名博士生和博士后为 73.4%；在同一 effort 下，每个模型看到项目记录时的得分都低于只看两个计划时。题目是按这五个模型答案出现分歧的标准挑选的，因此分数说明模型在哪里出错，而不是出错的频率；题目、提示词和项目记录已公开，模型的回答日志未公开。* [[code](https://github.com/AutoResearch-Factory/SciPIvot)]
 </details>
 
 <sub><a href="#contents">↑ 返回目录</a></sub>
@@ -870,6 +871,7 @@ GitHub 的 **Cite this repository** 按钮会读取 [`CITATION.cff`](CITATION.cf
 
 | | 贡献者 | 贡献内容 |
 |---|---|---|
+| <a href="https://github.com/WhymustIhaveaname"><img src="https://github.com/WhymustIhaveaname.png?size=48" width="48" height="48" alt="@WhymustIhaveaname"></a> | **[@WhymustIhaveaname](https://github.com/WhymustIhaveaname)** | SciΠvot：用资深研究者纠正 LLM 智能体研究决策的记录构建的基准，由第一作者本人提交，收入评估与基准（[#29](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/29)）；3 篇研究智能体与编排方向的论文：AutoNumerics、OptimAI、PerspectiveGap（[#1](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/1)）；Agon 的代码链接，以及那份让九条截断注释得以重写的报告（[#5](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/5)） |
 | <a href="https://github.com/passionate11"><img src="https://github.com/passionate11.png?size=48" width="48" height="48" alt="@passionate11"></a> | **[@passionate11](https://github.com/passionate11)** | ToolMaster：训练模型在依赖工具之前先试用工具，收入工具使用（[#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)）。由两位共同第一作者之一提交 |
 | <a href="https://github.com/segevshlomovIBM"><img src="https://github.com/segevshlomovIBM.png?size=48" width="48" height="48" alt="@segevshlomovIBM"></a> | **[@segevshlomovIBM](https://github.com/segevshlomovIBM)** | From Benchmarks to Business Impact：IBM 在招聘业务中试点 CUGA 智能体的报告，收入应用领域（[#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)）。由第一作者本人提交 |
 | <a href="https://github.com/KhanCold"><img src="https://github.com/KhanCold.png?size=48" width="48" height="48" alt="@KhanCold"></a> | **[@KhanCold](https://github.com/KhanCold)** | MerchantBench：让智能体在模拟的 365 天里经营网店的基准，收入评估与基准（[#24](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/24)）。由第一作者本人提交 |
@@ -889,7 +891,6 @@ GitHub 的 **Cite this repository** 按钮会读取 [`CITATION.cff`](CITATION.cf
 | <a href="https://github.com/reacher-z"><img src="https://github.com/reacher-z.png?size=48" width="48" height="48" alt="@reacher-z"></a> | **[@reacher-z](https://github.com/reacher-z)** | Dr. Bench：deep research 智能体评估；由作者之一提交，收入评估与基准（[#7](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/7)）；ClawBench：在线上真实网站上运行的浏览器智能体基准，同样收入该章节（[#3](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/3)） |
 | <a href="https://github.com/JEONGSEJIN"><img src="https://github.com/JEONGSEJIN.png?size=48" width="48" height="48" alt="@JEONGSEJIN"></a> | **[@JEONGSEJIN](https://github.com/JEONGSEJIN)** | WebAgent 和用世界模型增强的 Web 智能体，收入交互环境（[#6](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/6)） |
 | <a href="https://github.com/jinmang2"><img src="https://github.com/jinmang2.png?size=48" width="48" height="48" alt="@jinmang2"></a> | **[@jinmang2](https://github.com/jinmang2)** | 6 个智能体记忆系统：MemoryOS、Zep、Nemori、MemOS、G-Memory、ACE（[#2](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/2)） |
-| <a href="https://github.com/WhymustIhaveaname"><img src="https://github.com/WhymustIhaveaname.png?size=48" width="48" height="48" alt="@WhymustIhaveaname"></a> | **[@WhymustIhaveaname](https://github.com/WhymustIhaveaname)** | 3 篇研究智能体与编排方向的论文：AutoNumerics、OptimAI、PerspectiveGap（[#1](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/1)）；Agon 的代码链接，以及那份让九条截断注释得以重写的报告（[#5](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/5)） |
 | <a href="https://github.com/js-lee-AI"><img src="https://github.com/js-lee-AI.png?size=48" width="48" height="48" alt="@js-lee-AI"></a> | **[@js-lee-AI](https://github.com/js-lee-AI)** | 维护者 |
 </details>
 
@@ -903,6 +904,7 @@ GitHub 的 **Cite this repository** 按钮会读取 [`CITATION.cff`](CITATION.cf
 
 ## 🗓️ 更新记录
 
+- **2026-10-28**: 新增 SciΠvot，由第一作者 [@WhymustIhaveaname](https://github.com/WhymustIhaveaname) 提交，收入评估与基准（[#29](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/29)）。在智能体的研究计划和资深研究者纠正后的计划之间选择时，最好的前沿模型为 63.5%，初次接触这些项目的研究者为 73.4%。从 574 篇增至 575 篇。
 - **2026-10-28**: 新增 ToolMaster，由共同第一作者之一 [@passionate11](https://github.com/passionate11) 提交，收入工具使用（[#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)）。经过先试用工具的训练，Qwen2.5-7B 在 StableToolBench 上达到 66.4，未经训练的 GPT-4o 为 60.2。从 573 篇增至 574 篇。
 - **2026-10-19**: 新增 From Benchmarks to Business Impact，由第一作者 [@segevshlomovIBM](https://github.com/segevshlomovIBM) 提交，收入应用领域（[#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)）。在尚未正式投产的招聘业务试点中，IBM 的 CUGA 智能体在新建 BPO-TA 的 26 个任务上准确率为 87%。从 572 篇增至 573 篇。
 - **2026-10-17**: 新增 MerchantBench，由第一作者 [@KhanCold](https://github.com/KhanCold) 提交，收入评估与基准（[#24](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/24)）。在模拟经营网店 365 天之后，16 个 LLM 配置中最好的一个，最终净资产也只有人类参与者平均值的 27.3%。从 571 篇增至 572 篇。

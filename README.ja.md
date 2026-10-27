@@ -106,7 +106,7 @@ LLMエージェントを作るときに読むべき論文を、一行の説明�
   - [🌐 インタラクティブ環境 (60)](#environments)
   - [🚀 応用分野 (58)](#applications)
 - **⚖️ 第3部：横断的な課題**
-  - [📊 評価とベンチマーク (57)](#evaluation)
+  - [📊 評価とベンチマーク (58)](#evaluation)
   - [🛡️ 安全性とアライメント (62)](#safety)
 
 ## 🧭 背景
@@ -669,11 +669,11 @@ LLMエージェントを作るときに読むべき論文を、一行の説明�
 ## ⚖️ 第3部：横断的な課題
 
 <a id="evaluation"></a>
-### 📊 評価とベンチマーク (57)
+### 📊 評価とベンチマーク (58)
 *サーベイの§9（評価とベンチマーク）に対応します。*
 
 <details>
-<summary><b>57本の論文を表示</b></summary>
+<summary><b>58本の論文を表示</b></summary>
 
 - **[GAIA: a benchmark for General AI Assistants](https://arxiv.org/abs/2311.12983)** (Mialon et al., ICLR 2024) - *ツールを使う汎用エージェントアシスタントの基準となるベンチマーク。フロンティアエージェントの進歩を追う、人気の公開リーダーボードの土台になっている。*
 - **[SWE-bench: Can Language Models Resolve Real-World GitHub Issues?](https://arxiv.org/abs/2310.06770)** (Jimenez et al., ICLR 2024) - *コーディング／ソフトウェア工学エージェントの事実上の標準ベンチマーク。SWE-bench Verified/Lite/Live/Multimodalといった派生版を生んだ。* [[code](https://github.com/SWE-bench/SWE-bench)]
@@ -733,6 +733,7 @@ LLMエージェントを作るときに読むべき論文を、一行の説明�
 - **[Finding the Right Fit: Model-Harness Interactions across Agent Tasks](https://arxiv.org/abs/2610.00917)** (Li et al., arXiv 2026) - *五つのモデルを、設定可能な四つのharness（OpenHands、DeepSeek Harness、PI、openJiuwen）と組み合わせてTUA-Bench、ALE-CLI、Terminal-Bench 4で動かし、CodexとClaude Codeの純正の組み合わせを加えて、計 66 の設定を比べる。モデルの順位はharnessによって入れ替わり、Terminal-Bench 4では、ClaudeはOpenHandsではGPTを 7.94 ポイント上回ったが、PIでは 30.16 ポイント下回った。五つのモデルのうち四つは、ベンチマークごとに最良のharnessが変わり、モデルの開発元のharnessが常に最良とは限らなかった。GPT-6 AstraはPIでタスクあたり $4.66 で 60.32% を得たが、DeepSeek Harnessでは $19.94 で 52.38% だった。各タスクは最後の実行一回分だけを数える。* [[code](https://github.com/liyix/finding-the-right-fit)]
 - **[Mind the Gap Between Spatial Reasoning and Acting! Step-by-Step Evaluation of Agents With Spatial-Gym](https://arxiv.org/abs/2604.09338)** (Kaesberg et al., arXiv 2026) - *相互に絡む七種類のルールマスを持つ2Dグリッドの経路探索をGymnasiumのタスクにし、エージェントは提示された合法な手から一手ずつ経路を描く（手を戻す操作は任意）。open-weightモデル八つを 500 問のパズルで試すと、最良のGPT-OSS 120Bでも解けたのは 16.0% で、人間は 98.0%、ルールを無視して最短経路だけを探すエージェントは 6.4% だった。一手ずつの形式は書式の誤りをなくすため、弱いモデルでは一度に答える場合より最大 5.4 ポイント上がったが、強いモデルでは最大 5.6 ポイント下がった。手を戻せるようにするとGPT-OSSの完走率は 85% から 94% に上がったが、正解率は 5.8 ポイント下がった。パズルを画像で受け取ったQwen3-VL-32Bの正解率は 2.8% で、テキストで受け取った場合の 10.2% を下回った。プロプライエタリなモデルは試していない。* [[code](https://github.com/lkaesberg/Spatial-Gym)]
 - **[Super Research: Answering Highly Complex Questions with Large Language Models through Super Deep and Super Wide Research](https://arxiv.org/abs/2603.00582)** (Dong et al., arXiv 2026) - *十の分野にわたる 300 の開かれた研究課題を、GPT-4oとGemini Deep Researchで下書きしたうえで分野の専門家が精査して用意し、各レポートを、エージェントが作り専門家が手直しした事実と洞察の参照グラフに照らして、カバー率、論理的一貫性、LLMがレポートだけを見て答える設問、客観性、引用の分散で採点する。12 のシステムのうち総合で最も高いのはGemini Deep Researchの 28.62 で、内蔵の検索で答えたKimi-k2（26.16）がo3 Deep Research（22.04）を上回った。レポートから事実を 1 から 3 個削ったり加えたりすると、グラフに基づくスコアは 57.4% から 79.6% のケースで正しい方向に動いたが、LLMの評価者では 14.8% から 22.2% にとどまった。公開物には課題と 3,600 本のレポートがあるが、参照グラフと採点器はないため、新しいエージェントを論文と同じ方法で採点することはまだできない。* [[code](https://github.com/cnsdqd-dyb/Super-Research-Benchmark)]
+- **[SciΠvot: Benchmarking Principal-Investigator Judgment at Pivotal Moments of Scientific AutoResearch Agents](https://arxiv.org/abs/2610.21082)** (Sun et al., arXiv 2026) - *上級研究者が六か月にわたって六つの分野の 26 件のプロジェクトでLLMエージェントを動かし、その研究上の判断を正した記録から、二択の問題 248 問を作る。モデルは修正の直前までのプロジェクト記録だけを見て、エージェントの元の計画と修正後の計画のどちらかを選ぶ。中程度のreasoning effortでは、フロンティアモデル五つのうち四つが元の計画のほうを多く選び（Claude Opus 5は 38.9%、例外のGPT-6 Astraは 59.5%）、どの設定でも最高は 63.5% で、エージェントの補助を使える、プロジェクトを初めて見る博士課程の学生とポスドク 13 人の 73.4% に届かない。同じeffortでは、どのモデルも二つの計画だけを見るよりプロジェクト記録も見たほうが点が低かった。問題は評価した五つのモデルの答えが割れるものを選んでいるため、点数はモデルがどれだけ頻繁に誤るかではなく、どこで誤るかを示す。問題、プロンプト、プロジェクト記録は公開されているが、モデルごとの応答ログは公開されていない。* [[code](https://github.com/AutoResearch-Factory/SciPIvot)]
 </details>
 
 <sub><a href="#contents">↑ 目次に戻る</a></sub>
@@ -870,6 +871,7 @@ GitHubの**Cite this repository**ボタンは[`CITATION.cff`](CITATION.cff)を�
 
 | | コントリビューター | 貢献内容 |
 |---|---|---|
+| <a href="https://github.com/WhymustIhaveaname"><img src="https://github.com/WhymustIhaveaname.png?size=48" width="48" height="48" alt="@WhymustIhaveaname"></a> | **[@WhymustIhaveaname](https://github.com/WhymustIhaveaname)** | 「評価とベンチマーク」に、上級研究者がLLMエージェントの研究上の判断を正した記録から作ったベンチマーク、SciΠvot。第一著者本人による投稿（[#29](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/29)）。研究エージェントとorchestrationの論文 3 本：AutoNumerics、OptimAI、PerspectiveGap（[#1](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/1)）。Agonのコードリンクと、途中で切れていた九本の説明文を書き直すきっかけになった報告（[#5](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/5)） |
 | <a href="https://github.com/passionate11"><img src="https://github.com/passionate11.png?size=48" width="48" height="48" alt="@passionate11"></a> | **[@passionate11](https://github.com/passionate11)** | 「ツール利用」に、ツールに頼る前にまず試すようモデルを学習させるToolMaster（[#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)）。二人の共同第一著者の一人による投稿 |
 | <a href="https://github.com/segevshlomovIBM"><img src="https://github.com/segevshlomovIBM.png?size=48" width="48" height="48" alt="@segevshlomovIBM"></a> | **[@segevshlomovIBM](https://github.com/segevshlomovIBM)** | 「応用分野」に、IBMのCUGAエージェントを採用業務で試験導入した報告From Benchmarks to Business Impact（[#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)）。第一著者本人による投稿 |
 | <a href="https://github.com/KhanCold"><img src="https://github.com/KhanCold.png?size=48" width="48" height="48" alt="@KhanCold"></a> | **[@KhanCold](https://github.com/KhanCold)** | 「評価とベンチマーク」に、シミュレーション上の 365 日間エージェントにオンラインストアを運営させるベンチマークMerchantBench（[#24](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/24)）。第一著者本人による投稿 |
@@ -889,7 +891,6 @@ GitHubの**Cite this repository**ボタンは[`CITATION.cff`](CITATION.cff)を�
 | <a href="https://github.com/reacher-z"><img src="https://github.com/reacher-z.png?size=48" width="48" height="48" alt="@reacher-z"></a> | **[@reacher-z](https://github.com/reacher-z)** | 「評価とベンチマーク」に、deep researchエージェントの評価、Dr. Bench。著者の一人による投稿（[#7](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/7)）。同じセクションに、実際のWebで動かすブラウザエージェントのベンチマーク、ClawBench（[#3](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/3)） |
 | <a href="https://github.com/JEONGSEJIN"><img src="https://github.com/JEONGSEJIN.png?size=48" width="48" height="48" alt="@JEONGSEJIN"></a> | **[@JEONGSEJIN](https://github.com/JEONGSEJIN)** | 「インタラクティブ環境」に、WebAgentと、世界モデルで強化したWebエージェント（[#6](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/6)） |
 | <a href="https://github.com/jinmang2"><img src="https://github.com/jinmang2.png?size=48" width="48" height="48" alt="@jinmang2"></a> | **[@jinmang2](https://github.com/jinmang2)** | エージェントのメモリシステム 6 件：MemoryOS、Zep、Nemori、MemOS、G-Memory、ACE（[#2](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/2)） |
-| <a href="https://github.com/WhymustIhaveaname"><img src="https://github.com/WhymustIhaveaname.png?size=48" width="48" height="48" alt="@WhymustIhaveaname"></a> | **[@WhymustIhaveaname](https://github.com/WhymustIhaveaname)** | 研究エージェントとorchestrationの論文 3 本：AutoNumerics、OptimAI、PerspectiveGap（[#1](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/1)）。Agonのコードリンクと、途中で切れていた九本の説明文を書き直すきっかけになった報告（[#5](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/5)） |
 | <a href="https://github.com/js-lee-AI"><img src="https://github.com/js-lee-AI.png?size=48" width="48" height="48" alt="@js-lee-AI"></a> | **[@js-lee-AI](https://github.com/js-lee-AI)** | メンテナー |
 </details>
 
@@ -903,6 +904,7 @@ GitHubの**Cite this repository**ボタンは[`CITATION.cff`](CITATION.cff)を�
 
 ## 🗓️ 更新履歴
 
+- **2026-10-28**: 第一著者の[@WhymustIhaveaname](https://github.com/WhymustIhaveaname)が送ってくれたSciΠvotを「評価とベンチマーク」に追加しました（[#29](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/29)）。エージェントの研究計画と上級研究者が正した計画のどちらかを選ばせると、最良のフロンティアモデルは 63.5% で、プロジェクトを初めて見る研究者の 73.4% に届きませんでした。574 本から 575 本になりました。
 - **2026-10-28**: 共同第一著者の[@passionate11](https://github.com/passionate11)が送ってくれたToolMasterを「ツール利用」に追加しました（[#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)）。ツールをまず試すよう学習したQwen2.5-7Bは、StableToolBenchで 66.4 となり、学習なしのGPT-4oの 60.2 を上回りました。573 本から 574 本になりました。
 - **2026-10-19**: 第一著者の[@segevshlomovIBM](https://github.com/segevshlomovIBM)が送ってくれたFrom Benchmarks to Business Impactを「応用分野」に追加しました（[#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)）。まだ本番運用前の採用業務の試験で、IBMのCUGAエージェントは新しいBPO-TAの 26 タスクで正解率 87% でした。572 本から 573 本になりました。
 - **2026-10-17**: 第一著者の[@KhanCold](https://github.com/KhanCold)が送ってくれたMerchantBenchを「評価とベンチマーク」に追加しました（[#24](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/24)）。シミュレーション上の 365 日間オンラインストアを運営した結果、16 のLLM設定のうち最も良いものでも、人間の参加者の平均純資産の 27.3% にとどまりました。571 本から 572 本になりました。
