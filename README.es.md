@@ -100,7 +100,7 @@ Trabajos de 2026, publicados hace poco, que ya están llamando la atención.
 - **🧱 Parte I: Componentes principales**
   - [🧠 Planificación y razonamiento (55)](#planning)
   - [💾 Memoria (60)](#memory)
-  - [🔧 Uso de herramientas (50)](#tools)
+  - [🔧 Uso de herramientas (51)](#tools)
   - [🤝 Sistemas multiagente (57)](#multi-agent)
 - **🌍 Parte II: Agentes en entornos y aplicaciones**
   - [🌐 Entornos interactivos (60)](#environments)
@@ -392,11 +392,11 @@ Trabajos de 2026, publicados hace poco, que ya están llamando la atención.
 <sub><a href="#contents">↑ Volver al índice</a></sub>
 
 <a id="tools"></a>
-### 🔧 Uso de herramientas (50)
+### 🔧 Uso de herramientas (51)
 *En la revisión: §6 (Uso de herramientas y ejecución de acciones).*
 
 <details>
-<summary><b>Mostrar 50 artículos</b></summary>
+<summary><b>Mostrar 51 artículos</b></summary>
 
 - **[TALM: Tool Augmented Language Models](https://arxiv.org/abs/2205.12255)** (Parisi et al., arXiv 2022) - *Formulación temprana e influyente del bootstrapping autosupervisado para el uso de herramientas en modelos de lenguaje, que anticipa directamente el enfoque autosupervisado de Toolformer.*
 - **[API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs](https://arxiv.org/abs/2304.08244)** (Li et al., EMNLP 2023) - *Uno de los primeros benchmarks dedicados, y de los más citados, para evaluar y entrenar LLM de diálogo aumentados con herramientas.* [[code](https://github.com/AlibabaResearch/DAMO-ConvAI)]
@@ -449,6 +449,7 @@ Trabajos de 2026, publicados hace poco, que ya están llamando la atención.
 - **[ProgAgent: Learning Tool Orchestration through Programmatic Training](https://arxiv.org/abs/2610.14774)** (Li et al., arXiv 2026) - *Entrena a Qwen3-8B y 14B para coordinar herramientas escribiendo código que las llama y guarda los resultados intermedios en variables de ejecución en lugar de en el contexto, con 215 tareas sintetizadas en cuatro tamaños de entorno, primero con SFT de cold start y después con GSPO: el modelo de 14B llega al 29,7% en MCPMark, frente al 8,0% de la misma receta con llamadas directas a herramientas, y al 45,6% en MCP-Atlas, frente al 29,7% y al 43,8% de Claude Sonnet-4.5, pero el 40,7% de sus llamadas de código en Playwright contiene una sola invocación de herramienta, sin flujo de control, y los backbones sin entrenar ganan poco solo con la interfaz de código.*
 - **[Where Does Exactly-Once Live? Model, Harness, and Tool-Contract Effects on Duplicate Side Effects in LLM Agents](https://arxiv.org/abs/2609.29095)** (Li, arXiv 2026) - *Evalúa 25.930 episodios de nueve modelos, en un scaffold mínimo y en Copilot CLI, Hermes y Codex CLI, contra un registro de los efectos secundarios que de verdad se confirmaron en un sandbox de seis servicios simulados con doce fallos inyectados: con la instrucción de actuar exactamente una vez, los modelos punteros duplican solo el 0,5% de las escrituras cuyo acuse de recibo se perdió, pero el 56% con confirmaciones tardías y el 74% con reentregas, casos en los que una relectura no encuentra nada, el contrato de la herramienta explica el 81% de la varianza y el harness importa poco; una clave de idempotencia en cada escritura reduce los duplicados del 28% al 4%, y los agentes informaron de éxito en el 90% de los episodios en los que habían duplicado.*
 - **[Teaching LLMs to Learn Tool Trialing and Execution through Environment Interaction](https://arxiv.org/abs/2601.12762)** (Gao et al., arXiv 2026) - *Entrena al modelo para probar las herramientas antes de fiarse de ellas: SFT con trajectories que DeepSeek-V3.1 genera a partir de 1500 consultas de ToolBench, que prueban cada herramienta y pasan por self-correction, y después GRPO con otras 800. En StableToolBench, Qwen2.5-7B pasa de 43,4 a 66,4 en solvable pass rate, por delante del mejor baseline de RL, con 58,4, y de GPT-4o zero-shot, con 60,2, y Qwen3-14B llega a 71,1; en ToolHop, fuera del dominio de entrenamiento, el modelo de 7B sigue por detrás de GPT-4o, con 37,4 frente a 45,3, las pass rates las puntúa GPT-4o, las llamadas de prueba adicionales aumentan la latencia, y los autores advierten de que probar herramientas con efectos secundarios, como escribir datos, no es seguro. El código, los datos de entrenamiento y el checkpoint de 7B están publicados, y el pipeline publicado genera las trajectories de entrenamiento y hace el RL contra MirrorAPI-Cache, un modelo que simula las API.* [[code](https://github.com/NEUIR/ToolMaster)]
+- **[TabAgent: Distilling LLM Agent Components into Cheap Classifiers](https://arxiv.org/abs/2602.16429)** (Levy et al., arXiv 2026) - *Sustituye las llamadas a un LLM que un agente repite para elegir dentro de un conjunto cerrado de candidatos, como decidir qué herramientas entran en la lista corta, por un clasificador CatBoost entrenado con rasgos de las propias ejecuciones exitosas del agente: en AppWorld recupera entre el 92 y el 100% de las herramientas que eligió el selector de GPT-5.4 (Recall@9) en unos 3 ms en lugar de 7,5 s, a menos de 1/100.000 del coste, y, puesto en un agente CUGA en marcha, en 24 tareas held-out, llega a un 27,1% de éxito en las tareas frente al 29,2%, una diferencia cuyo intervalo del 95% va de -18,8 a +16,7 puntos. Un Llama-3.1-8B ajustado sigue puntuando más en cuatro de las cinco apps de AppWorld, el clasificador necesita un fondo de ejecuciones exitosas (118 para llegar al 90% de su puntuación en AppWorld) y hay que rehacerlo para otro scaffold de agente, en enrutamiento y gating solo empata con la mejor elección fija, y las ejecuciones de CUGA en las que se basan las cifras de AppWorld no se han publicado, aunque los resultados de los otros benchmarks pueden repetirse con el código.* [[code](https://github.com/dolev31/TabAgent)]
 </details>
 
 <sub><a href="#contents">↑ Volver al índice</a></sub>
@@ -867,10 +868,11 @@ La mayoría de los idiomas a los que está traducida esta lista no son mi lengua
 Esta lista la mantiene la comunidad. Gracias a todas las personas que han sugerido, verificado o anotado un artículo:
 
 <details>
-<summary><b>Mostrar 21 colaboradores</b></summary>
+<summary><b>Mostrar 22 colaboradores</b></summary>
 
 | | Colaborador | Contribución |
 |---|---|---|
+| <a href="https://github.com/dolev31"><img src="https://github.com/dolev31.png?size=48" width="48" height="48" alt="@dolev31"></a> | **[@dolev31](https://github.com/dolev31)** | TabAgent, que sustituye la llamada repetida de selección de herramientas de un agente por un clasificador pequeño entrenado con sus propias ejecuciones, enviado por su primer autor, en Uso de herramientas ([#30](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/30)) |
 | <a href="https://github.com/WhymustIhaveaname"><img src="https://github.com/WhymustIhaveaname.png?size=48" width="48" height="48" alt="@WhymustIhaveaname"></a> | **[@WhymustIhaveaname](https://github.com/WhymustIhaveaname)** | SciΠvot, un benchmark de decisiones de investigación construido a partir de las correcciones que investigadores sénior hicieron a agentes de LLM, enviado por su primer autor, en Evaluación y benchmarks ([#29](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/29)); 3 artículos sobre agentes de investigación y orquestación: AutoNumerics, OptimAI, PerspectiveGap ([#1](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/1)); el enlace al código de Agon y el aviso que llevó a reescribir nueve descripciones que estaban cortadas ([#5](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/5)) |
 | <a href="https://github.com/passionate11"><img src="https://github.com/passionate11.png?size=48" width="48" height="48" alt="@passionate11"></a> | **[@passionate11](https://github.com/passionate11)** | ToolMaster, que entrena al modelo para probar las herramientas antes de fiarse de ellas, enviado por uno de sus dos primeros autores, en Uso de herramientas ([#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)) |
 | <a href="https://github.com/segevshlomovIBM"><img src="https://github.com/segevshlomovIBM.png?size=48" width="48" height="48" alt="@segevshlomovIBM"></a> | **[@segevshlomovIBM](https://github.com/segevshlomovIBM)** | From Benchmarks to Business Impact, el piloto del agente CUGA de IBM en selección de personal, enviado por su primer autor, en Aplicaciones ([#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)) |
@@ -904,6 +906,7 @@ Publicado bajo la [licencia MIT](LICENSE).
 
 ## 🗓️ Actualizaciones
 
+- **2026-10-28**: TabAgent se añadió a Uso de herramientas, enviado por su primer autor ([@dolev31](https://github.com/dolev31), [#30](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/30)). Un clasificador entrenado con las propias ejecuciones del agente asume la selección de herramientas de GPT-5.4 en AppWorld en unos 3 ms por llamada en lugar de 7,5 s, y el éxito de un agente en marcha pasa del 29,2% al 27,1%, una diferencia demasiado pequeña para distinguirse en 24 tareas. De 575 a 576.
 - **2026-10-28**: SciΠvot se añadió a Evaluación y benchmarks, enviado por su primer autor ([@WhymustIhaveaname](https://github.com/WhymustIhaveaname), [#29](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/29)). Al elegir entre el plan de investigación de un agente y el que corrigió un investigador sénior, el mejor modelo de frontera llega al 63,5%, frente al 73,4% de investigadores que no conocían los proyectos. De 574 a 575.
 - **2026-10-28**: ToolMaster se añadió a Uso de herramientas, enviado por uno de sus dos primeros autores ([@passionate11](https://github.com/passionate11), [#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)). Entrenado para probar las herramientas antes de fiarse de ellas, Qwen2.5-7B llega a 66,4 en StableToolBench, frente a 60,2 de GPT-4o sin entrenar. De 573 a 574.
 - **2026-10-19**: From Benchmarks to Business Impact se añadió a Aplicaciones, enviado por su primer autor ([@segevshlomovIBM](https://github.com/segevshlomovIBM), [#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)). En un piloto de selección de personal que aún no está en producción plena, el agente CUGA de IBM alcanza un 87% en las 26 tareas del nuevo conjunto BPO-TA. De 572 a 573.

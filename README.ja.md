@@ -100,7 +100,7 @@ LLMエージェントを作るときに読むべき論文を、一行の説明�
 - **🧱 第1部：中核となる構成要素**
   - [🧠 計画と推論 (55)](#planning)
   - [💾 メモリ (60)](#memory)
-  - [🔧 ツール利用 (50)](#tools)
+  - [🔧 ツール利用 (51)](#tools)
   - [🤝 マルチエージェントシステム (57)](#multi-agent)
 - **🌍 第2部：環境と応用のなかのエージェント**
   - [🌐 インタラクティブ環境 (60)](#environments)
@@ -392,11 +392,11 @@ LLMエージェントを作るときに読むべき論文を、一行の説明�
 <sub><a href="#contents">↑ 目次に戻る</a></sub>
 
 <a id="tools"></a>
-### 🔧 ツール利用 (50)
+### 🔧 ツール利用 (51)
 *サーベイの§6（ツール利用と行動実行）に対応します。*
 
 <details>
-<summary><b>50本の論文を表示</b></summary>
+<summary><b>51本の論文を表示</b></summary>
 
 - **[TALM: Tool Augmented Language Models](https://arxiv.org/abs/2205.12255)** (Parisi et al., arXiv 2022) - *LMのツール利用を自己教師ありのbootstrappingで身につけさせる初期の定式化で、影響力が大きい。Toolformerの自己教師ありアプローチを直接先取りしていた。*
 - **[API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs](https://arxiv.org/abs/2304.08244)** (Li et al., EMNLP 2023) - *ツールで拡張した対話LLMの評価と学習に特化したベンチマークとして、最も早く、最も引用されているものの一つである。* [[code](https://github.com/AlibabaResearch/DAMO-ConvAI)]
@@ -449,6 +449,7 @@ LLMエージェントを作るときに読むべき論文を、一行の説明�
 - **[ProgAgent: Learning Tool Orchestration through Programmatic Training](https://arxiv.org/abs/2610.14774)** (Li et al., arXiv 2026) - *Qwen3-8Bと14Bに、ツールを呼ぶコードを書いてツールを使いこなすよう学習させる。途中の結果はコンテキストではなく実行時の変数に置く。四つの環境規模にわたる合成タスク 215 件でcold-start SFTを行い、続いてGSPOをかけた。14BモデルはMCPMarkで 29.7% に達し、同じ手順でツールを直接呼び出した場合の 8.0% を上回った。MCP-Atlasでは 45.6% で、直接呼び出しの 29.7% やClaude Sonnet-4.5の 43.8% より高かった。しかし、Playwrightでのコードによる呼び出しの 40.7% は、制御フローのない一回だけのツール呼び出しだった。学習していないバックボーンは、コードのインターフェースだけではほとんど伸びなかった。*
 - **[Where Does Exactly-Once Live? Model, Harness, and Tool-Contract Effects on Duplicate Side Effects in LLM Agents](https://arxiv.org/abs/2609.29095)** (Li, arXiv 2026) - *九つのモデルを、最小限のscaffoldと、Copilot CLI、Hermes、Codex CLIで動かした 25,930 件のエピソードを採点する。基準は、六つの模擬サービスと十二種類の注入した障害からなるsandboxで、実際にコミットされた副作用の台帳である。一度だけ実行するよう指示すると、最先端のモデルは確認応答が失われた書き込みを 0.5% しか重複させなかったが、コミットが遅れて反映される場合は 56%、メッセージが再配信される場合は 74% を重複させた。これらの場合は読み返しても何も見つからず、分散の 81% をツールの契約が説明し、harnessの影響は小さかった。すべての書き込みにidempotency keyを付けると、重複は 28% から 4% に減った。重複を起こしたエピソードの 90% で、エージェントは成功したと報告していた。*
 - **[Teaching LLMs to Learn Tool Trialing and Execution through Environment Interaction](https://arxiv.org/abs/2601.12762)** (Gao et al., arXiv 2026) - *ツールに頼る前にまず試してみるようモデルを学習させる。DeepSeek-V3.1がToolBenchのクエリ 1,500 件から作ったtrajectory、つまりツールを一つずつ試し、self-correctionも行うtrajectoryでSFTを行い、さらにクエリ 800 件でGRPOをかけた。StableToolBenchでは、Qwen2.5-7Bのsolvable pass rateが 43.4 から 66.4 に上がって最良のRL baseline（58.4）やzero-shotのGPT-4o（60.2）を上回り、Qwen3-14Bは 71.1 に達した。ただし、ドメイン外のToolHopでは7Bモデルが 37.4 で、GPT-4oの 45.3 に届かない。pass rateはGPT-4oが採点しており、試行の呼び出しが増える分だけ遅延も大きくなる。データの書き込みのような副作用を持つツールを試すのは安全でないと著者らも述べている。コード、学習データ、7Bのチェックポイントが公開されており、公開されたパイプラインは学習用trajectoryの生成とRLを、APIを模倣するモデルであるMirrorAPI-Cacheに対して行う。* [[code](https://github.com/NEUIR/ToolMaster)]
+- **[TabAgent: Distilling LLM Agent Components into Cheap Classifiers](https://arxiv.org/abs/2602.16429)** (Levy et al., arXiv 2026) - *候補の中から選ぶためにエージェントが繰り返し呼ぶLLM呼び出し、たとえばツール候補の絞り込みを、エージェント自身の成功した実行から取り出した特徴で学習したCatBoost分類器に置き換える。AppWorldでは、GPT-5.4のツール絞り込みが選んだツールの 92〜100% を取り戻し（Recall@9）、呼び出し一回あたり 7.5 秒ではなく約 3 ms、コストは 1/100,000 未満だった。稼働中のCUGAエージェントに組み込んでheld-outの 24 タスクを解かせると、タスク成功率は 27.1% で元の 29.2% と同程度だったが、差の 95% 区間は -18.8 から +16.7 ポイントにわたる。ファインチューニングしたLlama-3.1-8Bは、AppWorldの五つのアプリのうち四つで今も上回っている。分類器を作るには成功した実行記録の蓄積が必要で（AppWorldのスコアの 90% に達するのに 118 件）、エージェントのscaffoldが変われば作り直さなければならない。ルーティングとgatingでは最良の固定の選択と並ぶにとどまり、AppWorldの数値の元になったCUGAの実行記録は公開されていない。ほかのベンチマークの結果は公開コードで再実行できる。* [[code](https://github.com/dolev31/TabAgent)]
 </details>
 
 <sub><a href="#contents">↑ 目次に戻る</a></sub>
@@ -867,10 +868,11 @@ GitHubの**Cite this repository**ボタンは[`CITATION.cff`](CITATION.cff)を�
 このリストはコミュニティの手で保守されています。論文の提案、確認、説明文の執筆に協力してくださったすべての方に感謝します。
 
 <details>
-<summary><b>21人のコントリビューターを表示</b></summary>
+<summary><b>22人のコントリビューターを表示</b></summary>
 
 | | コントリビューター | 貢献内容 |
 |---|---|---|
+| <a href="https://github.com/dolev31"><img src="https://github.com/dolev31.png?size=48" width="48" height="48" alt="@dolev31"></a> | **[@dolev31](https://github.com/dolev31)** | 「ツール利用」に、エージェントが繰り返すツール絞り込みの呼び出しを、自身の実行記録で学習した小さな分類器に置き換えるTabAgent（[#30](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/30)）。第一著者本人による投稿 |
 | <a href="https://github.com/WhymustIhaveaname"><img src="https://github.com/WhymustIhaveaname.png?size=48" width="48" height="48" alt="@WhymustIhaveaname"></a> | **[@WhymustIhaveaname](https://github.com/WhymustIhaveaname)** | 「評価とベンチマーク」に、上級研究者がLLMエージェントの研究上の判断を正した記録から作ったベンチマーク、SciΠvot。第一著者本人による投稿（[#29](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/29)）。研究エージェントとorchestrationの論文 3 本：AutoNumerics、OptimAI、PerspectiveGap（[#1](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/1)）。Agonのコードリンクと、途中で切れていた九本の説明文を書き直すきっかけになった報告（[#5](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/5)） |
 | <a href="https://github.com/passionate11"><img src="https://github.com/passionate11.png?size=48" width="48" height="48" alt="@passionate11"></a> | **[@passionate11](https://github.com/passionate11)** | 「ツール利用」に、ツールに頼る前にまず試すようモデルを学習させるToolMaster（[#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)）。二人の共同第一著者の一人による投稿 |
 | <a href="https://github.com/segevshlomovIBM"><img src="https://github.com/segevshlomovIBM.png?size=48" width="48" height="48" alt="@segevshlomovIBM"></a> | **[@segevshlomovIBM](https://github.com/segevshlomovIBM)** | 「応用分野」に、IBMのCUGAエージェントを採用業務で試験導入した報告From Benchmarks to Business Impact（[#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)）。第一著者本人による投稿 |
@@ -904,6 +906,7 @@ GitHubの**Cite this repository**ボタンは[`CITATION.cff`](CITATION.cff)を�
 
 ## 🗓️ 更新履歴
 
+- **2026-10-28**: 第一著者の[@dolev31](https://github.com/dolev31)が送ってくれたTabAgentを「ツール利用」に追加しました（[#30](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/30)）。エージェント自身の実行記録で学習した分類器が、AppWorldでGPT-5.4のツール絞り込みを、呼び出し一回あたり 7.5 秒ではなく約 3 ms で代わりに行いました。稼働中のエージェントのタスク成功率は 29.2% から 27.1% になりましたが、24 タスクでは見分けられない差です。575 本から 576 本になりました。
 - **2026-10-28**: 第一著者の[@WhymustIhaveaname](https://github.com/WhymustIhaveaname)が送ってくれたSciΠvotを「評価とベンチマーク」に追加しました（[#29](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/29)）。エージェントの研究計画と上級研究者が正した計画のどちらかを選ばせると、最良のフロンティアモデルは 63.5% で、プロジェクトを初めて見る研究者の 73.4% に届きませんでした。574 本から 575 本になりました。
 - **2026-10-28**: 共同第一著者の[@passionate11](https://github.com/passionate11)が送ってくれたToolMasterを「ツール利用」に追加しました（[#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)）。ツールをまず試すよう学習したQwen2.5-7Bは、StableToolBenchで 66.4 となり、学習なしのGPT-4oの 60.2 を上回りました。573 本から 574 本になりました。
 - **2026-10-19**: 第一著者の[@segevshlomovIBM](https://github.com/segevshlomovIBM)が送ってくれたFrom Benchmarks to Business Impactを「応用分野」に追加しました（[#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)）。まだ本番運用前の採用業務の試験で、IBMのCUGAエージェントは新しいBPO-TAの 26 タスクで正解率 87% でした。572 本から 573 本になりました。

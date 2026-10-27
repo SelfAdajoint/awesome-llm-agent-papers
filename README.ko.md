@@ -100,7 +100,7 @@ LLM 에이전트를 만들 때 읽을 논문을 한 줄 설명과 함께 정리�
 - **🧱 제1부: 핵심 구성 요소**
   - [🧠 계획과 추론 (55)](#planning)
   - [💾 메모리 (60)](#memory)
-  - [🔧 도구 사용 (50)](#tools)
+  - [🔧 도구 사용 (51)](#tools)
   - [🤝 다중 에이전트 시스템 (57)](#multi-agent)
 - **🌍 제2부: 환경과 응용 속의 에이전트**
   - [🌐 상호작용 환경 (60)](#environments)
@@ -392,11 +392,11 @@ LLM 에이전트를 만들 때 읽을 논문을 한 줄 설명과 함께 정리�
 <sub><a href="#contents">↑ 목차로 돌아가기</a></sub>
 
 <a id="tools"></a>
-### 🔧 도구 사용 (50)
+### 🔧 도구 사용 (51)
 *서베이 §6(도구 사용과 행동 실행)에 해당합니다.*
 
 <details>
-<summary><b>논문 50편 보기</b></summary>
+<summary><b>논문 51편 보기</b></summary>
 
 - **[TALM: Tool Augmented Language Models](https://arxiv.org/abs/2205.12255)** (Parisi et al., arXiv 2022) - *언어 모델이 자기 지도 방식으로 도구 사용을 스스로 익히게 하는 초기 정식화로 영향력이 컸고, Toolformer의 자기 지도 접근에 앞서 같은 방향을 제시했다.*
 - **[API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs](https://arxiv.org/abs/2304.08244)** (Li et al., EMNLP 2023) - *도구로 보강한 대화형 LLM을 평가하고 학습시키는 전용 벤치마크 가운데 가장 이르고 가장 많이 인용된 것 중 하나이다.* [[code](https://github.com/AlibabaResearch/DAMO-ConvAI)]
@@ -449,6 +449,7 @@ LLM 에이전트를 만들 때 읽을 논문을 한 줄 설명과 함께 정리�
 - **[ProgAgent: Learning Tool Orchestration through Programmatic Training](https://arxiv.org/abs/2610.14774)** (Li et al., arXiv 2026) - *Qwen3-8B와 14B가 도구를 부르는 코드를 써서 도구를 조율하도록 학습시킨다. 중간 결과는 컨텍스트가 아니라 런타임 변수에 담긴다. 환경 크기 네 가지에 걸친 합성 과제 215개로 cold-start SFT를 한 뒤 GSPO를 적용했다. 14B 모델은 MCPMark에서 29.7%로, 같은 방식으로 학습하되 도구를 직접 호출한 경우의 8.0%를 앞섰고, MCP-Atlas에서는 45.6%로 직접 호출의 29.7%와 Claude Sonnet-4.5의 43.8%보다 높았다. 그러나 Playwright에서 코드로 한 호출의 40.7%는 제어 흐름 없이 도구를 한 번만 부르는 것이었고, 학습하지 않은 백본은 코드 인터페이스만으로는 거의 나아지지 않았다.*
 - **[Where Does Exactly-Once Live? Model, Harness, and Tool-Contract Effects on Duplicate Side Effects in LLM Agents](https://arxiv.org/abs/2609.29095)** (Li, arXiv 2026) - *모델 아홉 개를 최소한의 scaffold와 Copilot CLI, Hermes, Codex CLI에서 돌린 에피소드 25,930개를 채점한다. 기준은 시뮬레이션 서비스 여섯 개와 주입한 장애 열두 가지로 이루어진 sandbox에서 실제로 커밋된 부수 효과의 장부다. 정확히 한 번만 실행하라고 지시하면 최신 모델은 확인 응답이 사라진 쓰기를 0.5%만 중복했지만, 커밋이 늦게 반영될 때는 56%, 메시지가 다시 전달될 때는 74%를 중복했다. 이 두 경우에는 다시 읽어 봐도 아무것도 나오지 않으며, 분산의 81%를 도구 계약이 설명했고 harness의 영향은 작았다. 모든 쓰기에 idempotency key를 붙이면 중복이 28%에서 4%로 줄었다. 중복을 일으킨 에피소드의 90%에서 에이전트는 성공했다고 보고했다.*
 - **[Teaching LLMs to Learn Tool Trialing and Execution through Environment Interaction](https://arxiv.org/abs/2601.12762)** (Gao et al., arXiv 2026) - *도구에 기대기 전에 먼저 시험해 보도록 모델을 학습시킨다. DeepSeek-V3.1이 ToolBench 질의 1,500개로 만든 trajectory, 곧 도구를 하나씩 시험해 보고 self-correction까지 거치는 trajectory로 SFT를 하고, 질의 800개로 GRPO를 더했다. StableToolBench에서 Qwen2.5-7B의 solvable pass rate는 43.4에서 66.4로 올라 가장 좋은 RL baseline(58.4)과 zero-shot GPT-4o(60.2)를 앞섰고, Qwen3-14B는 71.1에 이르렀다. 다만 도메인 밖 벤치마크인 ToolHop에서는 7B 모델이 37.4로 GPT-4o의 45.3에 못 미쳤고, pass rate는 GPT-4o가 채점했으며, 시험 호출이 늘어나는 만큼 지연이 커진다. 데이터를 쓰는 것처럼 부작용이 있는 도구를 시험해 보는 것은 안전하지 않다고 저자들도 밝혔다. 코드, 학습 데이터, 7B 체크포인트가 공개되어 있고, 공개된 파이프라인은 학습 trajectory 생성과 RL을 API를 흉내 내는 모델인 MirrorAPI-Cache에 대고 돌린다.* [[code](https://github.com/NEUIR/ToolMaster)]
+- **[TabAgent: Distilling LLM Agent Components into Cheap Classifiers](https://arxiv.org/abs/2602.16429)** (Levy et al., arXiv 2026) - *도구 후보를 추리는 일처럼 에이전트가 정해진 후보 가운데서 고르려고 반복해서 부르는 LLM 호출을, 에이전트 자신의 성공한 실행에서 뽑은 특징으로 학습한 CatBoost 분류기로 바꾼다. AppWorld에서는 GPT-5.4 도구 후보 선별기가 고른 도구의 92~100%를 되찾았고(Recall@9), 호출 한 번에 7.5초 대신 약 3ms, 비용은 1/100,000 미만이었다. 실제로 돌아가는 CUGA 에이전트에 끼워 held-out 과제 24개를 풀게 하자 과제 성공률은 27.1%로 원래의 29.2%와 비슷했지만, 차이의 95% 구간은 -18.8에서 +16.7포인트에 걸친다. 미세 조정한 Llama-3.1-8B가 AppWorld 앱 다섯 개 중 네 개에서 여전히 더 높고, 분류기를 만들려면 성공한 실행 기록이 쌓여 있어야 하며(AppWorld 점수의 90%에 이르는 데 118개), 에이전트 scaffold가 바뀌면 다시 만들어야 한다. 라우팅과 gating에서는 가장 좋은 고정 선택과 비기는 데 그쳤고, AppWorld 수치의 바탕인 CUGA 실행 기록은 공개되지 않았다. 다른 벤치마크 결과는 공개 코드로 다시 돌려 볼 수 있다.* [[code](https://github.com/dolev31/TabAgent)]
 </details>
 
 <sub><a href="#contents">↑ 목차로 돌아가기</a></sub>
@@ -867,10 +868,11 @@ GitHub의 **Cite this repository** 버튼은 [`CITATION.cff`](CITATION.cff)를 �
 이 목록은 커뮤니티가 함께 관리합니다. 논문을 제안하고, 검증하고, 설명을 달아 주신 모든 분께 감사드립니다:
 
 <details>
-<summary><b>기여자 21명 보기</b></summary>
+<summary><b>기여자 22명 보기</b></summary>
 
 | | 기여자 | 기여 내용 |
 |---|---|---|
+| <a href="https://github.com/dolev31"><img src="https://github.com/dolev31.png?size=48" width="48" height="48" alt="@dolev31"></a> | **[@dolev31](https://github.com/dolev31)** | 도구 사용 절에 에이전트가 반복해서 부르는 도구 후보 선별 LLM 호출을 자기 실행 기록으로 학습한 작은 분류기로 바꾸는 TabAgent 추가([#30](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/30)). 제1저자가 직접 제출 |
 | <a href="https://github.com/WhymustIhaveaname"><img src="https://github.com/WhymustIhaveaname.png?size=48" width="48" height="48" alt="@WhymustIhaveaname"></a> | **[@WhymustIhaveaname](https://github.com/WhymustIhaveaname)** | 평가와 벤치마크 절에 선임 연구자가 LLM 에이전트의 연구 결정을 바로잡은 기록으로 만든 벤치마크 SciΠvot 추가, 제1저자가 직접 제출([#29](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/29)). 연구 에이전트·orchestration 논문 3편: AutoNumerics, OptimAI, PerspectiveGap([#1](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/1)). Agon 코드 링크, 그리고 잘려 있던 설명 아홉 개를 다시 쓰게 된 제보([#5](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/5)) |
 | <a href="https://github.com/passionate11"><img src="https://github.com/passionate11.png?size=48" width="48" height="48" alt="@passionate11"></a> | **[@passionate11](https://github.com/passionate11)** | 도구 사용 절에 도구에 기대기 전에 먼저 시험해 보도록 모델을 학습시키는 ToolMaster 추가([#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)). 공동 제1저자 중 한 명이 직접 제출 |
 | <a href="https://github.com/segevshlomovIBM"><img src="https://github.com/segevshlomovIBM.png?size=48" width="48" height="48" alt="@segevshlomovIBM"></a> | **[@segevshlomovIBM](https://github.com/segevshlomovIBM)** | 응용 분야 절에 IBM의 CUGA 에이전트를 채용 업무에 시범 투입한 보고 From Benchmarks to Business Impact 추가([#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)). 제1저자가 직접 제출 |
@@ -904,6 +906,7 @@ GitHub의 **Cite this repository** 버튼은 [`CITATION.cff`](CITATION.cff)를 �
 
 ## 🗓️ 업데이트 기록
 
+- **2026-10-28**: 제1저자 [@dolev31](https://github.com/dolev31)가 보내 준 TabAgent를 도구 사용 절에 추가했습니다([#30](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/30)). 에이전트 자신의 실행 기록으로 학습한 분류기가 AppWorld에서 GPT-5.4의 도구 후보 선별을 호출당 7.5초 대신 약 3ms로 대신했고, 실제 에이전트의 과제 성공률은 29.2%에서 27.1%가 되었는데, 과제 24개로는 구별할 수 없는 차이입니다. 575편에서 576편으로 늘었습니다.
 - **2026-10-28**: 제1저자 [@WhymustIhaveaname](https://github.com/WhymustIhaveaname)가 보내 준 SciΠvot를 평가와 벤치마크 절에 추가했습니다([#29](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/29)). 에이전트의 연구 계획과 선임 연구자가 바로잡은 계획 중 하나를 고르게 하자, 가장 좋은 프런티어 모델이 63.5%로 프로젝트를 처음 본 연구자들의 73.4%에 못 미쳤습니다. 574편에서 575편으로 늘었습니다.
 - **2026-10-28**: 공동 제1저자 [@passionate11](https://github.com/passionate11)가 보내 준 ToolMaster를 도구 사용 절에 추가했습니다([#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)). 도구를 먼저 시험해 보도록 학습한 Qwen2.5-7B는 StableToolBench에서 66.4로, 따로 학습하지 않은 GPT-4o의 60.2를 앞섰습니다. 573편에서 574편으로 늘었습니다.
 - **2026-10-19**: 제1저자 [@segevshlomovIBM](https://github.com/segevshlomovIBM)가 보내 준 From Benchmarks to Business Impact를 응용 분야 절에 추가했습니다([#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)). 아직 정식 운영 전인 채용 업무 시범에서 IBM의 CUGA 에이전트는 새 BPO-TA의 과제 26개에 정확도 87%를 냈습니다. 572편에서 573편으로 늘었습니다.

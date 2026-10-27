@@ -100,7 +100,7 @@
 - **🧱 第一部分：核心组成**
   - [🧠 规划与推理 (55)](#planning)
   - [💾 记忆 (60)](#memory)
-  - [🔧 工具使用 (50)](#tools)
+  - [🔧 工具使用 (51)](#tools)
   - [🤝 多智能体系统 (57)](#multi-agent)
 - **🌍 第二部分：环境与应用中的智能体**
   - [🌐 交互环境 (60)](#environments)
@@ -392,11 +392,11 @@
 <sub><a href="#contents">↑ 返回目录</a></sub>
 
 <a id="tools"></a>
-### 🔧 工具使用 (50)
+### 🔧 工具使用 (51)
 *对应综述 §6（工具使用与行动执行）。*
 
 <details>
-<summary><b>展开 50 篇论文</b></summary>
+<summary><b>展开 51 篇论文</b></summary>
 
 - **[TALM: Tool Augmented Language Models](https://arxiv.org/abs/2205.12255)** (Parisi et al., arXiv 2022) - *较早提出用自监督自举让语言模型学会使用工具，影响很大，直接预示了 Toolformer 的自监督方法。*
 - **[API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs](https://arxiv.org/abs/2304.08244)** (Li et al., EMNLP 2023) - *最早也是引用最多的专用基准之一，用来评估和训练工具增强的对话 LLM。* [[code](https://github.com/AlibabaResearch/DAMO-ConvAI)]
@@ -449,6 +449,7 @@
 - **[ProgAgent: Learning Tool Orchestration through Programmatic Training](https://arxiv.org/abs/2610.14774)** (Li et al., arXiv 2026) - *训练 Qwen3-8B 和 14B 通过编写调用工具的代码来编排工具，中间结果保存在运行时变量里，而不放进上下文；训练数据是四种环境规模下合成的 215 个任务，先做 cold-start SFT，再做 GSPO。14B 模型在 MCPMark 上达到 29.7%，同样配方但直接调用工具时为 8.0%；在 MCP-Atlas 上达到 45.6%，直接调用为 29.7%，Claude Sonnet-4.5 为 43.8%。但它在 Playwright 上的代码调用有 40.7% 只包含一次工具调用、没有任何控制流，未经训练的骨干模型仅靠代码接口也几乎没有提升。*
 - **[Where Does Exactly-Once Live? Model, Harness, and Tool-Contract Effects on Duplicate Side Effects in LLM Agents](https://arxiv.org/abs/2609.29095)** (Li, arXiv 2026) - *把九个模型在一个最小 scaffold 以及 Copilot CLI、Hermes 和 Codex CLI 下运行的 25,930 个回合，对照一个由六个模拟服务和十二种注入故障组成的 sandbox 中实际提交的副作用账本来评分。被要求只执行一次时，前沿模型对确认消息丢失的写操作只重复了 0.5%，但在提交延迟时重复了 56%，在消息重新投递时重复了 74%；这两种情况下回读查不到任何东西，方差的 81% 由工具契约解释，harness 的影响很小。给每次写操作加上 idempotency key，重复率从 28% 降到 4%；在发生了重复的回合中，智能体有 90% 报告了成功。*
 - **[Teaching LLMs to Learn Tool Trialing and Execution through Environment Interaction](https://arxiv.org/abs/2601.12762)** (Gao et al., arXiv 2026) - *训练模型在依赖工具之前先试用工具：先用 DeepSeek-V3.1 在 1,500 个 ToolBench 查询上生成的 trajectory 做 SFT，这些 trajectory 会逐个试用工具并做 self-correction，再在另外 800 个查询上做 GRPO。在 StableToolBench 上，Qwen2.5-7B 的 solvable pass rate 从 43.4 提高到 66.4，高于最好的 RL baseline（58.4）和 zero-shot 的 GPT-4o（60.2），Qwen3-14B 达到 71.1；但在领域外的 ToolHop 上，7B 模型以 37.4 仍落后于 GPT-4o 的 45.3，pass rate 由 GPT-4o 评判，额外的试用调用会增加延迟，作者也提醒，试用会产生副作用（例如写入数据）的工具并不安全。代码、训练数据和 7B checkpoint 均已公开，公开的流程在生成训练 trajectory 和做 RL 时调用的是模拟 API 的模型 MirrorAPI-Cache。* [[code](https://github.com/NEUIR/ToolMaster)]
+- **[TabAgent: Distilling LLM Agent Components into Cheap Classifiers](https://arxiv.org/abs/2602.16429)** (Levy et al., arXiv 2026) - *把智能体为在固定候选集中作选择而反复发出的 LLM 调用（例如挑选候选工具）换成一个 CatBoost 分类器，用从智能体自己成功运行中提取的特征训练：在 AppWorld 上，它找回了 GPT-5.4 候选工具筛选器所选工具的 92% 到 100%（Recall@9），每次调用约 3 ms 而不是 7.5 s，成本不到 1/100,000；接入正在运行的 CUGA 智能体、在 24 个 held-out 任务上测试时，任务成功率为 27.1%，原来为 29.2%，差值的 95% 区间从 -18.8 到 +16.7 个百分点。微调后的 Llama-3.1-8B 在 AppWorld 的五个应用中仍有四个得分更高；分类器需要先积累成功运行的记录（达到 AppWorld 得分的 90% 需要 118 条），换一个智能体 scaffold 就得重新构建；在路由和 gating 上只与最好的固定选择持平；AppWorld 数字所依据的 CUGA 运行记录没有公开，其他基准的结果可以用公开代码重跑。* [[code](https://github.com/dolev31/TabAgent)]
 </details>
 
 <sub><a href="#contents">↑ 返回目录</a></sub>
@@ -867,10 +868,11 @@ GitHub 的 **Cite this repository** 按钮会读取 [`CITATION.cff`](CITATION.cf
 这份清单由社区共同维护。感谢每一位推荐、核实或注释过论文的朋友：
 
 <details>
-<summary><b>展开 21 位贡献者</b></summary>
+<summary><b>展开 22 位贡献者</b></summary>
 
 | | 贡献者 | 贡献内容 |
 |---|---|---|
+| <a href="https://github.com/dolev31"><img src="https://github.com/dolev31.png?size=48" width="48" height="48" alt="@dolev31"></a> | **[@dolev31](https://github.com/dolev31)** | TabAgent：用基于智能体自身运行记录训练的小分类器，替代它反复发出的候选工具筛选调用，收入工具使用（[#30](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/30)）。由第一作者本人提交 |
 | <a href="https://github.com/WhymustIhaveaname"><img src="https://github.com/WhymustIhaveaname.png?size=48" width="48" height="48" alt="@WhymustIhaveaname"></a> | **[@WhymustIhaveaname](https://github.com/WhymustIhaveaname)** | SciΠvot：用资深研究者纠正 LLM 智能体研究决策的记录构建的基准，由第一作者本人提交，收入评估与基准（[#29](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/29)）；3 篇研究智能体与编排方向的论文：AutoNumerics、OptimAI、PerspectiveGap（[#1](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/1)）；Agon 的代码链接，以及那份让九条截断注释得以重写的报告（[#5](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/5)） |
 | <a href="https://github.com/passionate11"><img src="https://github.com/passionate11.png?size=48" width="48" height="48" alt="@passionate11"></a> | **[@passionate11](https://github.com/passionate11)** | ToolMaster：训练模型在依赖工具之前先试用工具，收入工具使用（[#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)）。由两位共同第一作者之一提交 |
 | <a href="https://github.com/segevshlomovIBM"><img src="https://github.com/segevshlomovIBM.png?size=48" width="48" height="48" alt="@segevshlomovIBM"></a> | **[@segevshlomovIBM](https://github.com/segevshlomovIBM)** | From Benchmarks to Business Impact：IBM 在招聘业务中试点 CUGA 智能体的报告，收入应用领域（[#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)）。由第一作者本人提交 |
@@ -904,6 +906,7 @@ GitHub 的 **Cite this repository** 按钮会读取 [`CITATION.cff`](CITATION.cf
 
 ## 🗓️ 更新记录
 
+- **2026-10-28**: 新增 TabAgent，由第一作者 [@dolev31](https://github.com/dolev31) 提交，收入工具使用（[#30](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/30)）。用智能体自身运行记录训练的分类器，在 AppWorld 上接替 GPT-5.4 的候选工具筛选，每次约 3 ms 而不是 7.5 s；实际运行的智能体任务成功率从 29.2% 变为 27.1%，在 24 个任务上无法区分这一差距。从 575 篇增至 576 篇。
 - **2026-10-28**: 新增 SciΠvot，由第一作者 [@WhymustIhaveaname](https://github.com/WhymustIhaveaname) 提交，收入评估与基准（[#29](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/29)）。在智能体的研究计划和资深研究者纠正后的计划之间选择时，最好的前沿模型为 63.5%，初次接触这些项目的研究者为 73.4%。从 574 篇增至 575 篇。
 - **2026-10-28**: 新增 ToolMaster，由共同第一作者之一 [@passionate11](https://github.com/passionate11) 提交，收入工具使用（[#28](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/28)）。经过先试用工具的训练，Qwen2.5-7B 在 StableToolBench 上达到 66.4，未经训练的 GPT-4o 为 60.2。从 573 篇增至 574 篇。
 - **2026-10-19**: 新增 From Benchmarks to Business Impact，由第一作者 [@segevshlomovIBM](https://github.com/segevshlomovIBM) 提交，收入应用领域（[#25](https://github.com/js-lee-AI/awesome-llm-agent-papers/pull/25)）。在尚未正式投产的招聘业务试点中，IBM 的 CUGA 智能体在新建 BPO-TA 的 26 个任务上准确率为 87%。从 572 篇增至 573 篇。
